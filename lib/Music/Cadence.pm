@@ -80,7 +80,8 @@ Create a new C<Music::Cadence> object.
 
 Return an array reference of the notes of the cadence B<type> (and
 B<variation> when B<type> is C<imperfect>) based on the given B<key>
-and B<scale> name.  The B<octave> is optional.
+and B<scale> name.  The B<octave> is optional and if given, should be
+a number greater than or equal to zero.
 
 The B<variation> is a number for each diatonic scale chord to use for
 the first C<imperfect> cadence chord.  So for the key of C<C major>
