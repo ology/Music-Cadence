@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0106';
+our $VERSION = '0.0200';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -28,7 +28,7 @@ use namespace::clean;
   $notes = $mc->cadence(
     key     => 'C',
     scale   => 'major',
-    type    => 'imperfect',
+    type    => 'half',
     leading => 2,
     octave  => 0,
   ); # [['D','F','A'], ['G','B','D']]
@@ -65,14 +65,14 @@ Create a new C<Music::Cadence> object.
   );
 
 Return an array reference of the chords of the cadence B<type> (and
-B<leading> chord when B<type> is C<imperfect>) based on the given B<key>
+B<leading> chord when B<type> is C<half>) based on the given B<key>
 and B<scale> name.  The B<octave> is optional and if given, should be
 a number greater than or equal to zero.
 
 Supported cadences are:
 
   perfect
-  imperfect
+  half
   plagal
   deceptive
 
@@ -87,8 +87,8 @@ Supported scales are:
   locrian
 
 The B<leading> chord is a number for each diatonic scale chord to use
-for the first C<imperfect> cadence chord.  So for the key of
-C<C major> this is:
+for the first C<half> cadence chord.  So for the key of C<C major>
+this is:
 
   CM: 1
   Dm: 2
@@ -129,7 +129,7 @@ sub cadence {
         $cadence = _generate_chord( $scale[3], $args{octave}, $mtr, $mcn, $cadence );
         $cadence = _generate_chord( $scale[0], $args{octave}, $mtr, $mcn, $cadence );
     }
-    elsif ( $args{type} eq 'imperfect' ) {
+    elsif ( $args{type} eq 'half' ) {
         $cadence = _generate_chord( $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn, $cadence );
         $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
     }
@@ -178,6 +178,6 @@ L<https://www.musictheoryacademy.com/how-to-read-sheet-music/cadences/>
 
 Evaded cadence
 
-Half cadences
+Imperfect cadence
 
 =cut
