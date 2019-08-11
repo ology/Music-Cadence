@@ -87,13 +87,13 @@ The B<variation> is a number for each diatonic scale chord to use for
 the first C<imperfect> cadence chord.  So for the key of C<C major>
 this is:
 
-  CM: 0
-  Dm: 1
-  EM: 2
-  Fm: 3
-  GM: 4
-  Am: 5
-  Bo: 6
+  CM: 1
+  Dm: 2
+  EM: 3
+  Fm: 4
+  GM: 5
+  Am: 6
+  Bo: 7
 
 =cut
 
@@ -110,7 +110,7 @@ sub cadence {
 
     my $n     = 0;
     my @scale = get_scale_notes( $args{key}, $args{scale} );
-    my %notes = map { $n++ => $_ } @scale;
+    my %notes = map { ++$n => $_ } @scale;
 
     my $mcn = Music::Chord::Note->new;
 
@@ -121,20 +121,20 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{1}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'plagal' ) {
-        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{1}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'imperfect' ) {
         $cadence = _generate_chord( $notes{ $args{variation} }, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {
+        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
         $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;
