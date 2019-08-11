@@ -13,9 +13,9 @@ isa_ok $mc, 'Music::Cadence';
 my $chords = $mc->cadence(
     key   => 'C',
     scale => 'major',
-    type  => 'foo',
+    type  => 'unknown',
 );
-is_deeply $chords, [], 'C foo';
+is_deeply $chords, [], 'C unknown';
 
 $chords = $mc->cadence(
     key   => 'C',
