@@ -48,9 +48,10 @@ $chords = $mc->cadence( type => 'deceptive' );
 is_deeply $chords, [ [qw/ G B D /], [qw/ A C E /] ], 'C deceptive';
 
 $chords = $mc->cadence(
-    key  => 'C#',
-    type => 'deceptive',
+    key       => 'C#',
+    type      => 'deceptive',
+    variation => 2,
 );
-is_deeply $chords, [ [qw/ G# C D# /], [qw/ A# C# F /] ], 'C# deceptive';
+is_deeply $chords, [ [qw/ G# C D# /], [qw/ F# A# C# /] ], 'C# deceptive';
 
 done_testing();

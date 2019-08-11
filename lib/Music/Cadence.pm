@@ -57,17 +57,24 @@ Create a new C<Music::Cadence> object.
   $notes = $mc->cadence;  # Use defaults
 
   $notes = $mc->cadence(
-    key     => $key,      # Default: C
-    scale   => $scale,    # Default: major
-    type    => $type,     # Default: perfect
-    leading => $leading,  # Default: 1
-    octave  => $octave,   # Default: 0
+    key       => $key,        # Default: C
+    scale     => $scale,      # Default: major
+    type      => $type,       # Default: perfect
+    leading   => $leading,    # Default: 1
+    octave    => $octave,     # Default: 0
+    variation => $variation,  # Default: 1
   );
 
 Return an array reference of the chords of the cadence B<type> (and
 B<leading> chord when B<type> is C<half>) based on the given B<key>
-and B<scale> name.  The B<octave> is optional and if given, should be
-a number greater than or equal to zero.
+and B<scale> name.
+
+The B<octave> is optional and if given, should be a number greater
+than or equal to zero.
+
+The B<variation> applys to the C<deceptive> cadence and determines the
+final chord.  If given as C<1>, the C<vi> chord is used.  If given as
+C<2>, the C<IV> chord is used.
 
 Supported cadences are:
 
@@ -105,11 +112,12 @@ sub cadence {
 
     my $cadence = [];
 
-    $args{key}     ||= 'C';
-    $args{scale}   ||= 'major';
-    $args{type}    ||= 'perfect';
-    $args{leading} ||= 1;
-    $args{octave}  //= 0;
+    $args{key}       ||= 'C';
+    $args{scale}     ||= 'major';
+    $args{type}      ||= 'perfect';
+    $args{octave}    //= 0;
+    $args{leading}   ||= 1;
+    $args{variation} ||= 1;
 
     my @scale = get_scale_notes( $args{key}, $args{scale} );
 
@@ -135,7 +143,8 @@ sub cadence {
     }
     elsif ( $args{type} eq 'deceptive' ) {
         $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $scale[5], $args{octave}, $mtr, $mcn, $cadence );
+        my $note = $args{variation} == 1 ? $scale[5] : $scale[3];
+        $cadence = _generate_chord( $note, $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;
