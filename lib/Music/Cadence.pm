@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provides musical cadence chords
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0102';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -105,7 +105,7 @@ sub cadence {
     $args{key}       ||= 'C';
     $args{scale}     ||= 'major';
     $args{type}      ||= 'perfect';
-    $args{variation} //= 0;
+    $args{variation} ||= 1;
     $args{octave}    //= 0;
 
     my $n     = 0;

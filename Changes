@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix variation default.
+
+0.0101 2019-08-11 02:15:45
     - Fix documentation.
 
 0.0100 2019-08-11 01:55:35
