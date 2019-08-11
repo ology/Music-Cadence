@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0104';
+our $VERSION = '0.0105';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -137,7 +137,7 @@ sub cadence {
     }
     elsif ( $args{type} eq 'deceptive' ) {
         $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{6}, $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;

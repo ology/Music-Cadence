@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix the resolution chord of the desceptive cadence.
+
+0.0104 2019-08-11 08:02:59
     - Add crucial disclaimer.
 
 0.0103 2019-08-11 07:42:42
