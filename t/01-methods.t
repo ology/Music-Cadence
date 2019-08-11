@@ -10,11 +10,7 @@ use_ok 'Music::Cadence';
 my $mc = Music::Cadence->new;
 isa_ok $mc, 'Music::Cadence';
 
-my $chords = $mc->cadence(
-    key   => 'C',
-    scale => 'major',
-    type  => 'unknown',
-);
+my $chords = $mc->cadence( type => 'unknown' );
 is_deeply $chords, [], 'C unknown';
 
 $chords = $mc->cadence(
