@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0103';
+our $VERSION = '0.0104';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -36,6 +36,8 @@ use namespace::clean;
 =head1 DESCRIPTION
 
 C<Music::Cadence> provides musical cadence chords.
+
+* This module is a naive implementation of the actual theory.
 
 =head1 ATTRIBUTES
 

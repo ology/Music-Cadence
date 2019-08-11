@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add crucial disclaimer.
+
+0.0103 2019-08-11 07:42:42
     - Fix documentation error.
     - Change argument name from variation to leading.
 
