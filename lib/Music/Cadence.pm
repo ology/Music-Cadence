@@ -37,8 +37,6 @@ use namespace::clean;
 
 C<Music::Cadence> provides the chords of musical cadences.
 
-* This a naive attempt with not enough knowledge of music theory.
-
 Supported cadences are:
 
   perfect
