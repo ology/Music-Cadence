@@ -144,10 +144,10 @@ sub cadence {
 sub _generate_chord {
     my ( $note, $octave, $mtr, $mcn, $cadence ) = @_;
 
-    my $roman   = $mtr->parse($note);
-    my $valance = $roman =~ /o/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
+    my $roman = $mtr->parse($note);
+    my $type  = $roman =~ /o/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
 
-    my @notes = $mcn->chord( $note . $valance );
+    my @notes = $mcn->chord( $note . $type );
 
     @notes = map { $_ . $octave } @notes
         if $octave;
