@@ -45,12 +45,12 @@ $chords = $mc->cadence(
 is_deeply $chords, [ [qw/ A# C# F /], [qw/ G# C D# /] ], 'C# imperfect';
 
 $chords = $mc->cadence( type => 'deceptive' );
-is_deeply $chords, [ [qw/ G B D /], [qw/ F A C /] ], 'C deceptive';
+is_deeply $chords, [ [qw/ G B D /], [qw/ A C E /] ], 'C deceptive';
 
 $chords = $mc->cadence(
     key  => 'C#',
     type => 'deceptive',
 );
-is_deeply $chords, [ [qw/ G# C D# /], [qw/ F# A# C# /] ], 'C# deceptive';
+is_deeply $chords, [ [qw/ G# C D# /], [qw/ A# C# F /] ], 'C# deceptive';
 
 done_testing();
