@@ -37,23 +37,6 @@ use namespace::clean;
 
 C<Music::Cadence> provides musical cadence chords.
 
-Supported cadences are:
-
-  perfect
-  imperfect
-  plagal
-  deceptive
-
-Supported scales are:
-
-  ionian / major
-  dorian
-  phrygian
-  lydian
-  mixolydian
-  aeolian / minor
-  locrian
-
 =head1 ATTRIBUTES
 
 None.
@@ -82,6 +65,23 @@ Return an array reference of the notes of the cadence B<type> (and
 B<variation> when B<type> is C<imperfect>) based on the given B<key>
 and B<scale> name.  The B<octave> is optional and if given, should be
 a number greater than or equal to zero.
+
+Supported cadences are:
+
+  perfect
+  imperfect
+  plagal
+  deceptive
+
+Supported scales are:
+
+  ionian / major
+  dorian
+  phrygian
+  lydian
+  mixolydian
+  aeolian / minor
+  locrian
 
 The B<variation> is a number for each diatonic scale chord to use for
 the first C<imperfect> cadence chord.  So for the key of C<C major>
