@@ -7,17 +7,17 @@ use Test::More;
 
 use_ok 'Music::Cadence';
 
-my $obj = Music::Cadence->new;
-isa_ok $obj, 'Music::Cadence';
+my $mc = Music::Cadence->new;
+isa_ok $mc, 'Music::Cadence';
 
-my $chords = $obj->cadence(
+my $chords = $mc->cadence(
     key   => 'C',
     scale => 'major',
     type  => 'perfect',
 );
 is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key    => 'C#',
     scale  => 'major',
     type   => 'perfect',
@@ -25,21 +25,21 @@ $chords = $obj->cadence(
 );
 is_deeply $chords, [ [qw/ G#4 C4 D#4 /], [qw/ C#4 F4 G#4 /] ], 'C# perfect';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key   => 'C',
     scale => 'major',
     type  => 'plagal',
 );
 is_deeply $chords, [ [qw/ F A C /], [qw/ C E G /] ], 'C plagal';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key   => 'C#',
     scale => 'major',
     type  => 'plagal',
 );
 is_deeply $chords, [ [qw/ F# A# C# /], [qw/ C# F G# /] ], 'C# plagal';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key       => 'C',
     scale     => 'major',
     type      => 'imperfect',
@@ -47,7 +47,7 @@ $chords = $obj->cadence(
 );
 is_deeply $chords, [ [qw/ D F A /], [qw/ G B D /] ], 'C imperfect';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key       => 'C#',
     scale     => 'major',
     type      => 'imperfect',
@@ -55,14 +55,14 @@ $chords = $obj->cadence(
 );
 is_deeply $chords, [ [qw/ A# C# F /], [qw/ G# C D# /] ], 'C# imperfect';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key   => 'C',
     scale => 'major',
     type  => 'deceptive',
 );
 is_deeply $chords, [ [qw/ G B D /], [qw/ F A C /] ], 'C deceptive';
 
-$chords = $obj->cadence(
+$chords = $mc->cadence(
     key   => 'C#',
     scale => 'major',
     type  => 'deceptive',
