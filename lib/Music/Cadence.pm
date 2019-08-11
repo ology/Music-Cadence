@@ -145,7 +145,7 @@ sub _generate_chord {
     my ( $note, $octave, $mtr, $mcn, $cadence ) = @_;
 
     my $roman   = $mtr->parse($note);
-    my $valance = $roman =~ /^[a-z]/ ? 'm' : '';
+    my $valance = $roman =~ /o/ ? 'dim' : /^[a-z]/ ? 'm' : '';
 
     my @notes = $mcn->chord( $note . $valance );
 
