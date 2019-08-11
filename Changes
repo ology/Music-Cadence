@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Remove %notes & just use the @scale indexes.
+
+0.0105 2019-08-11 08:12:49
     - Fix the resolution chord of the desceptive cadence.
 
 0.0104 2019-08-11 08:02:59

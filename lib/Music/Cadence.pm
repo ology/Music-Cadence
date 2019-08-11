@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0105';
+our $VERSION = '0.0106';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -111,9 +111,7 @@ sub cadence {
     $args{leading} ||= 1;
     $args{octave}  //= 0;
 
-    my $n     = 0;
     my @scale = get_scale_notes( $args{key}, $args{scale} );
-    my %notes = map { ++$n => $_ } @scale;
 
     my $mcn = Music::Chord::Note->new;
 
@@ -124,20 +122,20 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{1}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[0], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'plagal' ) {
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{1}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[3], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[0], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'imperfect' ) {
-        $cadence = _generate_chord( $notes{ $args{leading} }, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {
-        $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $notes{6}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $scale[5], $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;
