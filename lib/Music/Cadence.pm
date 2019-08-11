@@ -19,16 +19,18 @@ use namespace::clean;
   my $mc = Music::Cadence->new;
 
   my $notes = $mc->cadence(
-    key   => 'C',
-    scale => 'major',
-    type  => 'perfect',
-  ); # [['G','B','D'], ['C','E','G']]
+    key    => 'C',
+    scale  => 'major',
+    type   => 'perfect',
+    octave => 4,
+  ); # [['G4','B4','D4'], ['C4','E4','G4']]
 
   $notes = $mc->cadence(
     key       => 'C',
     scale     => 'major',
     type      => 'imperfect',
     variation => 1,
+    octave    => 0,
   ); # [['D','F','A'], ['G','B','D']]
 
 =head1 DESCRIPTION
@@ -75,11 +77,12 @@ Create a new C<Music::Cadence> object.
     scale     => $scale,        # Default: major
     type      => $type,         # Default: perfect
     variation => $variation,    # Default: 0
+    octave    => $octave,       # Default: 0
   );
 
 Return an array reference of the notes of the cadence B<type> (and
 B<variation> when B<type> is C<imperfect>) based on the given B<key>
-and B<scale> name.
+and B<scale> name.  The B<octave> is optional.
 
 The B<variation> is a number for each diatonic scale chord to use for
 the first C<imperfect> cadence chord.  So for the key of C<C major>
@@ -104,6 +107,7 @@ sub cadence {
     $args{scale}     ||= 'major';
     $args{type}      ||= 'perfect';
     $args{variation} //= 0;
+    $args{octave}    //= 0;
 
     my $n     = 0;
     my @scale = get_scale_notes( $args{key}, $args{scale} );
@@ -118,32 +122,37 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        $cadence = _generate_chord( $notes{4}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $cn, $cadence );
     }
     elsif ( $args{type} eq 'plagal' ) {
-        $cadence = _generate_chord( $notes{3}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $cn, $cadence );
     }
     elsif ( $args{type} eq 'imperfect' ) {
-        $cadence = _generate_chord( $notes{ $args{variation} }, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{4}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{ $args{variation} }, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {
-        $cadence = _generate_chord( $notes{4}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{3}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $cn, $cadence );
     }
 
     return $cadence;
 }
 
 sub _generate_chord {
-    my ( $note, $mtr, $cn, $cadence ) = @_;
+    my ( $note, $octave, $mtr, $cn, $cadence ) = @_;
 
     my $roman   = $mtr->parse($note);
     my $valance = $roman =~ /^[a-z]/ ? 'm' : '';
 
-    push @$cadence, [ $cn->chord( $note . $valance ) ];
+    my @notes = $cn->chord( $note . $valance );
+
+    @notes = map { $_ . $octave } @notes
+        if $octave;
+
+    push @$cadence, \@notes;
 
     return $cadence;
 }
