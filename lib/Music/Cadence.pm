@@ -72,9 +72,9 @@ and B<scale> name.
 The B<octave> is optional and if given, should be a number greater
 than or equal to zero.
 
-The B<variation> applys to the C<deceptive> cadence and determines the
-final chord.  If given as C<1>, the C<vi> chord is used.  If given as
-C<2>, the C<IV> chord is used.
+The B<variation> applies to the C<deceptive> cadence and determines
+the final chord.  If given as C<1>, the C<vi> chord is used.  If given
+as C<2>, the C<IV> chord is used.
 
 Supported cadences are:
 
