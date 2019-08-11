@@ -1,5 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix documentation.
+
+0.0100 2019-08-11 01:55:35
     - Add working code!
     - Mint by Dist:Zilla.
