@@ -89,8 +89,8 @@ this is:
 
   CM: 1
   Dm: 2
-  EM: 3
-  Fm: 4
+  Em: 3
+  FM: 4
   GM: 5
   Am: 6
   Bo: 7
