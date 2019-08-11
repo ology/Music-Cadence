@@ -18,11 +18,12 @@ my $notes = $obj->cadence(
 is_deeply $notes, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
 
 $notes = $obj->cadence(
-    key   => 'C#',
-    scale => 'major',
-    type  => 'perfect',
+    key    => 'C#',
+    scale  => 'major',
+    type   => 'perfect',
+    octave => 4,
 );
-is_deeply $notes, [ [qw/ G# C D# /], [qw/ C# F G# /] ], 'C# perfect';
+is_deeply $notes, [ [qw/ G#4 C4 D#4 /], [qw/ C#4 F4 G#4 /] ], 'C# perfect';
 
 $notes = $obj->cadence(
     key   => 'C',
