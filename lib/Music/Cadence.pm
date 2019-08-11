@@ -37,7 +37,8 @@ use namespace::clean;
 
 C<Music::Cadence> provides musical cadence chords.
 
-* This module is a naive implementation of the actual theory.
+* This module is a very naive implementation of the actual theory.
+YMMV.
 
 =head1 ATTRIBUTES
 
