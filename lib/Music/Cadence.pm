@@ -113,7 +113,7 @@ sub cadence {
     my @scale = get_scale_notes( $args{key}, $args{scale} );
     my %notes = map { $n++ => $_ } @scale;
 
-    my $cn = Music::Chord::Note->new;
+    my $mcn = Music::Chord::Note->new;
 
     my $mtr = Music::ToRoman->new(
         scale_note => $args{key},
@@ -122,32 +122,32 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'plagal' ) {
-        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{0}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'imperfect' ) {
-        $cadence = _generate_chord( $notes{ $args{variation} }, $args{octave}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{ $args{variation} }, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {
-        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $cn, $cadence );
-        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $cn, $cadence );
+        $cadence = _generate_chord( $notes{4}, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{3}, $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;
 }
 
 sub _generate_chord {
-    my ( $note, $octave, $mtr, $cn, $cadence ) = @_;
+    my ( $note, $octave, $mtr, $mcn, $cadence ) = @_;
 
     my $roman   = $mtr->parse($note);
     my $valance = $roman =~ /^[a-z]/ ? 'm' : '';
 
-    my @notes = $cn->chord( $note . $valance );
+    my @notes = $mcn->chord( $note . $valance );
 
     @notes = map { $_ . $octave } @notes
         if $octave;
