@@ -29,7 +29,7 @@ use namespace::clean;
     key       => 'C',
     scale     => 'major',
     type      => 'imperfect',
-    variation => 1,
+    variation => 2,
     octave    => 0,
   ); # [['D','F','A'], ['G','B','D']]
 
