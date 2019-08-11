@@ -11,7 +11,7 @@ my $mc = Music::Cadence->new;
 isa_ok $mc, 'Music::Cadence';
 
 my $chords = $mc->cadence( type => 'unknown' );
-is_deeply $chords, [], 'C unknown';
+is_deeply $chords, [], 'unknown cadence';
 
 $chords = $mc->cadence(
     key   => 'C',
