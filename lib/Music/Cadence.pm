@@ -54,7 +54,7 @@ Create a new C<Music::Cadence> object.
 
 =head2 cadence
 
-  $notes = $mc->cadence;        # Use defaults
+  $notes = $mc->cadence;  # Use defaults
 
   $notes = $mc->cadence(
     key     => $key,      # Default: C
