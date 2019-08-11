@@ -1,6 +1,6 @@
 package Music::Cadence;
 
-# ABSTRACT: Provides the chords of musical cadences
+# ABSTRACT: Provides musical cadence chords
 
 our $VERSION = '0.0100';
 
@@ -35,7 +35,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-C<Music::Cadence> provides the chords of musical cadences.
+C<Music::Cadence> provides musical cadence chords.
 
 Supported cadences are:
 
