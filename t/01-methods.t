@@ -32,15 +32,15 @@ $chords = $mc->cadence(
 is_deeply $chords, [ [qw/ F# A# C# /], [qw/ C# F G# /] ], 'C# plagal';
 
 $chords = $mc->cadence(
-    type      => 'imperfect',
-    variation => 2,
+    type    => 'imperfect',
+    leading => 2,
 );
 is_deeply $chords, [ [qw/ D F A /], [qw/ G B D /] ], 'C imperfect';
 
 $chords = $mc->cadence(
-    key       => 'C#',
-    type      => 'imperfect',
-    variation => 6,
+    key     => 'C#',
+    type    => 'imperfect',
+    leading => 6,
 );
 is_deeply $chords, [ [qw/ A# C# F /], [qw/ G# C D# /] ], 'C# imperfect';
 

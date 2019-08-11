@@ -1,8 +1,8 @@
 package Music::Cadence;
 
-# ABSTRACT: Provides musical cadence chords
+# ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 
 use Music::Chord::Note;
 use Music::Scales;
@@ -26,11 +26,11 @@ use namespace::clean;
   ); # [['G4','B4','D4'], ['C4','E4','G4']]
 
   $notes = $mc->cadence(
-    key       => 'C',
-    scale     => 'major',
-    type      => 'imperfect',
-    variation => 2,
-    octave    => 0,
+    key     => 'C',
+    scale   => 'major',
+    type    => 'imperfect',
+    leading => 2,
+    octave  => 0,
   ); # [['D','F','A'], ['G','B','D']]
 
 =head1 DESCRIPTION
@@ -54,15 +54,15 @@ Create a new C<Music::Cadence> object.
   $notes = $mc->cadence;        # Use defaults
 
   $notes = $mc->cadence(
-    key       => $key,          # Default: C
-    scale     => $scale,        # Default: major
-    type      => $type,         # Default: perfect
-    variation => $variation,    # Default: 0
-    octave    => $octave,       # Default: 0
+    key     => $key,      # Default: C
+    scale   => $scale,    # Default: major
+    type    => $type,     # Default: perfect
+    leading => $leading,  # Default: 1
+    octave  => $octave,   # Default: 0
   );
 
-Return an array reference of the notes of the cadence B<type> (and
-B<variation> when B<type> is C<imperfect>) based on the given B<key>
+Return an array reference of the chords of the cadence B<type> (and
+B<leading> chord when B<type> is C<imperfect>) based on the given B<key>
 and B<scale> name.  The B<octave> is optional and if given, should be
 a number greater than or equal to zero.
 
@@ -83,9 +83,9 @@ Supported scales are:
   aeolian / minor
   locrian
 
-The B<variation> is a number for each diatonic scale chord to use for
-the first C<imperfect> cadence chord.  So for the key of C<C major>
-this is:
+The B<leading> chord is a number for each diatonic scale chord to use
+for the first C<imperfect> cadence chord.  So for the key of
+C<C major> this is:
 
   CM: 1
   Dm: 2
@@ -102,11 +102,11 @@ sub cadence {
 
     my $cadence = [];
 
-    $args{key}       ||= 'C';
-    $args{scale}     ||= 'major';
-    $args{type}      ||= 'perfect';
-    $args{variation} ||= 1;
-    $args{octave}    //= 0;
+    $args{key}     ||= 'C';
+    $args{scale}   ||= 'major';
+    $args{type}    ||= 'perfect';
+    $args{leading} ||= 1;
+    $args{octave}  //= 0;
 
     my $n     = 0;
     my @scale = get_scale_notes( $args{key}, $args{scale} );
@@ -129,7 +129,7 @@ sub cadence {
         $cadence = _generate_chord( $notes{1}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'imperfect' ) {
-        $cadence = _generate_chord( $notes{ $args{variation} }, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $notes{ $args{leading} }, $args{octave}, $mtr, $mcn, $cadence );
         $cadence = _generate_chord( $notes{5}, $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {

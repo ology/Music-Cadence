@@ -1,6 +1,10 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix documentation error.
+    - Change argument name from variation to leading.
+
+0.0102 2019-08-11 02:31:29
     - Fix variation default.
 
 0.0101 2019-08-11 02:15:45
