@@ -13,6 +13,13 @@ isa_ok $mc, 'Music::Cadence';
 my $chords = $mc->cadence(
     key   => 'C',
     scale => 'major',
+    type  => 'foo',
+);
+is_deeply $chords, [], 'C foo';
+
+$chords = $mc->cadence(
+    key   => 'C',
+    scale => 'major',
     type  => 'perfect',
 );
 is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
