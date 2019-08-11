@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provides musical cadence chords
 
-our $VERSION = '0.0100';
+our $VERSION = '0.0101';
 
 use Music::Chord::Note;
 use Music::Scales;
