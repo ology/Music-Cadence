@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add eg/cadence to illustrate real life usage.
+
+0.0200 2019-08-11 11:03:00
     - Remove %notes & just use the @scale indexes.
     - Replace imperfect with half.
     - Fix the variation of the deceptive cadence.
