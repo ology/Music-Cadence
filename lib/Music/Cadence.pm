@@ -2,13 +2,13 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0201';
+our $VERSION = '0.0202';
 
+use Moo;
 use Music::Chord::Note;
 use Music::Scales;
 use Music::ToRoman;
 
-use Moo;
 use strictures 2;
 use namespace::clean;
 
