@@ -18,14 +18,14 @@ use namespace::clean;
 
   my $mc = Music::Cadence->new;
 
-  my $notes = $mc->cadence(
+  my $chords = $mc->cadence(
     key    => 'C',
     scale  => 'major',
     type   => 'perfect',
     octave => 4,
   ); # [['G4','B4','D4'], ['C4','E4','G4']]
 
-  $notes = $mc->cadence(
+  $chords = $mc->cadence(
     key     => 'C',
     scale   => 'major',
     type    => 'half',
@@ -54,9 +54,9 @@ Create a new C<Music::Cadence> object.
 
 =head2 cadence
 
-  $notes = $mc->cadence;  # Use defaults
+  $chords = $mc->cadence;  # Use defaults
 
-  $notes = $mc->cadence(
+  $chords = $mc->cadence(
     key       => $key,        # Default: C
     scale     => $scale,      # Default: major
     type      => $type,       # Default: perfect
