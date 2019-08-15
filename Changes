@@ -2,6 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Correct diminished chord handling given the scale.
+    - Add tests for scale variations.
     - Improve documentation.
     - Enhance eg/cadence functionality.
 
