@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0202';
+our $VERSION = '0.0300';
 
 use Moo;
 use Music::Chord::Note;
@@ -182,6 +182,8 @@ sub _generate_chord {
 __END__
 
 =head1 SEE ALSO
+
+The F<eg/cadence> and F<t/01-methods.t> files in this distribution.
 
 L<Moo>
 
