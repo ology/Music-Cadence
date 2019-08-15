@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Correct diminished chord handling given the scale.
     - Improve documentation.
     - Enhance eg/cadence functionality.
 
