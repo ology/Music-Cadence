@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.0300 2019-08-14 21:38:00
     - Correct diminished chord handling given the scale.
     - Add tests for scale variations.
     - Improve documentation.
