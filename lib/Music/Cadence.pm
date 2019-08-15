@@ -130,31 +130,43 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $scale[0], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'plagal' ) {
-        $cadence = _generate_chord( $scale[3], $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $scale[0], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[3], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'half' ) {
-        $cadence = _generate_chord( $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn, $cadence );
-        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn, $cadence );
     }
     elsif ( $args{type} eq 'deceptive' ) {
-        $cadence = _generate_chord( $scale[4], $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn, $cadence );
         my $note = $args{variation} == 1 ? $scale[5] : $scale[3];
-        $cadence = _generate_chord( $note, $args{octave}, $mtr, $mcn, $cadence );
+        $cadence = _generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn, $cadence );
     }
 
     return $cadence;
 }
 
 sub _generate_chord {
-    my ( $note, $octave, $mtr, $mcn, $cadence ) = @_;
+    my ( $scale, $note, $octave, $mtr, $mcn, $cadence ) = @_;
+
+    my %diminished = (
+        ionian     => 'vii',
+        major      => 'vii',
+        dorian     => 'vi',
+        phrygian   => 'v',
+        lydian     => 'iv',
+        mixolydian => 'iii',
+        aeolian    => 'ii',
+        minor      => 'ii',
+        locrian    => 'i',
+    );
 
     my $roman = $mtr->parse($note);
-    my $type  = $roman =~ /o/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
+    my $type  = $roman =~ /^$diminished{$scale}$/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
 
     my @notes = $mcn->chord( $note . $type );
 
