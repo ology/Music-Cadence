@@ -24,11 +24,10 @@ for my $i ( 1 .. $max ) {
     $score->n( 'qn', $note1, $note2 );
 
     if ( $i % 4 == 0 ) {
-        my $leading = $leaders[ int rand @leaders ];
         my $chords = $mc->cadence(
             type    => 'half',
             octave  => 4,
-            leading => $leading,
+            leading => $leaders[ int rand @leaders ],
         );
 
         $score->n( 'hn', @{ $chords->[0] } );
