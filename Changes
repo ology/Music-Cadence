@@ -2,6 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Make key, scale, and octave object attributes.
+    - Add attribute test cases.
     - Improve documentation.
     - Cleanup code.
 
