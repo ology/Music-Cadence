@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Make key, scale, and octave object attributes.
+    - Improve documentation.
+    - Cleanup code.
 
 0.0300 2019-08-14 21:38:00
     - Correct diminished chord handling given the scale.
