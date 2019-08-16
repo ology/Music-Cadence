@@ -28,17 +28,14 @@ for my $i ( 1 .. $max ) {
             type    => 'half',
             leading => $leaders[ int rand @leaders ],
         );
-        $score->n( 'hn', @{ $chords->[0] } );
-        $score->n( 'hn', @{ $chords->[1] } );
+        $score->n( 'hn', @$_ ) for @$chords;
     }
 }
 
 my $chords = $mc->cadence( type => 'deceptive' );
-$score->n( 'hn', @{ $chords->[0] } );
-$score->n( 'hn', @{ $chords->[1] } );
+$score->n( 'hn', @$_ ) for @$chords;
 
 $chords = $mc->cadence( type => 'plagal' );
-$score->n( 'hn', @{ $chords->[0] } );
-$score->n( 'hn', @{ $chords->[1] } );
+$score->n( 'hn', @$_ ) for @$chords;
 
 $score->write_score("$0.mid");
