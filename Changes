@@ -2,6 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Make the parameters of eg/cadence user definable.
+    - Improved documentation ever so slightly.
 
 0.0401 2019-08-16 13:35:00
     - Simplify the eg/cadence code.
