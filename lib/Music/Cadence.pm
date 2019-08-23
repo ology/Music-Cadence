@@ -208,6 +208,8 @@ sub _generate_chord {
         locrian    => 'i',
     );
 
+    die 'Unknown scale' unless exists $diminished{$scale};
+
     # Figure out if the chord is diminished, minor, or major
     my $roman = $mtr->parse($note);
     my $type  = $roman =~ /^$diminished{$scale}$/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
