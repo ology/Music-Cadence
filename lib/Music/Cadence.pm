@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0401';
+our $VERSION = '0.0402';
 
 use Moo;
 use Music::Chord::Note;
@@ -188,6 +188,9 @@ sub cadence {
         $chord = _generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
+    else {
+        die 'unknown cadence';
+    }
 
     return $cadence;
 }
@@ -208,7 +211,7 @@ sub _generate_chord {
         locrian    => 'i',
     );
 
-    die 'Unknown scale' unless exists $diminished{$scale};
+    die 'unknown scale' unless exists $diminished{$scale};
 
     # Figure out if the chord is diminished, minor, or major
     my $roman = $mtr->parse($note);
