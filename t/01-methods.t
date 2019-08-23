@@ -11,15 +11,18 @@ use_ok 'Music::Cadence';
 my $mc = Music::Cadence->new;
 isa_ok $mc, 'Music::Cadence';
 
-is $mc->key, 'C', 'key';
-is $mc->scale, 'major', 'scale';
-is $mc->octave, 0, 'octave';
+is $mc->key, 'C', 'default key';
+is $mc->scale, 'major', 'default scale';
+is $mc->octave, 0, 'default octave';
+
+throws_ok { $mc->cadence( key => 'X' ) }
+    qr/unknown chord/, 'unknown key';
 
 throws_ok { $mc->cadence( type => 'unknown' ) }
-    qr/Unknown cadence/, 'unknown cadence';
+    qr/unknown cadence/, 'unknown cadence';
 
 throws_ok { $mc->cadence( scale => 'unknown' ) }
-    qr/Unknown scale/, 'unknown scale';
+    qr/unknown scale/, 'unknown scale';
 
 my $chords = $mc->cadence;
 is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
