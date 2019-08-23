@@ -4,6 +4,7 @@ use warnings;
 no warnings 'qw';
 
 use Test::More;
+use Test::Exception;
 
 use_ok 'Music::Cadence';
 
@@ -14,10 +15,13 @@ is $mc->key, 'C', 'key';
 is $mc->scale, 'major', 'scale';
 is $mc->octave, 0, 'octave';
 
-my $chords = $mc->cadence( type => 'unknown' );
-is_deeply $chords, [], 'unknown cadence';
+throws_ok { $mc->cadence( type => 'unknown' ) }
+    qr/Unknown cadence/, 'unknown cadence';
 
-$chords = $mc->cadence;
+throws_ok { $mc->cadence( scale => 'unknown' ) }
+    qr/Unknown scale/, 'unknown scale';
+
+my $chords = $mc->cadence;
 is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
 
 $chords = $mc->cadence(
