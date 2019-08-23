@@ -1,9 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
-    - Make the parameters of eg/cadence user definable.
-    - Improve documentation ever so slightly.
     - Die if given an unknown scale or cadence.
+    - Improve documentation ever so slightly.
+    - Make the parameters of eg/cadence user definable.
 
 0.0401 2019-08-16 13:35:00
     - Simplify the eg/cadence code.
