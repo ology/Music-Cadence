@@ -44,6 +44,8 @@ Patches welcome.
 
 The key or tonal center to use.  Default: C<C>
 
+Examples: C<G#>, C<Eb>
+
 =cut
 
 has key => (
