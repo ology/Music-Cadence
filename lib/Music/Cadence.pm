@@ -113,9 +113,8 @@ Create a new C<Music::Cadence> object.
     variation => $variation,  # Default: 1
   );
 
-Return an array reference of the chords of the cadence B<type> (and
-B<leading> chord when B<type> is C<half>) based on the given B<key>
-and B<scale> name.
+Return an array reference of the chords of the cadence B<type> based
+on the given B<key> and B<scale> name.
 
 The B<octave> is optional and if given, should be a number greater
 than or equal to zero.
