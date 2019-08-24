@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Die if the half cadence leading chord is outside the 1-7 range.
+    - Improve documentation.
 
 0.0405 2019-08-24 11:50:06
     - Remove the accidentally shipped *.mid file. :\
