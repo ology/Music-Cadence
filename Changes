@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Remove the accidentally shipped *.mid file. :\
 
 0.0404 2019-08-24 11:45:02
     - Improve documentation.
