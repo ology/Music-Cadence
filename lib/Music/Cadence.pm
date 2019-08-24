@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0405';
+our $VERSION = '0.0406';
 
 use Moo;
 use Music::Chord::Note;
@@ -132,8 +132,8 @@ Supported cadences are:
   plagal
   deceptive
 
-The B<leading> chord is a number for each diatonic scale chord to use
-for the first C<half> cadence chord.  So for the key of C<C major>
+The B<leading> chord is a number (1-7) for each diatonic scale chord
+to use for the first C<half> cadence chord.  For the key of C<C major>
 this is:
 
   CM: 1
@@ -157,6 +157,8 @@ sub cadence {
     $args{type}      ||= 'perfect';
     $args{leading}   ||= 1;
     $args{variation} ||= 1;
+
+    die 'unknown leader' if $args{leading} < 1 or $args{leading} > 7;
 
     my @scale = get_scale_notes( $args{key}, $args{scale} );
 
