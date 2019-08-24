@@ -104,7 +104,7 @@ Create a new C<Music::Cadence> object.
 
   $chords = $mc->cadence;     # Use defaults
 
-  $chords = $mc->cadence(
+  $chords = $mc->cadence(     # Override defaults
     key       => $key,        # Default: C
     scale     => $scale,      # Default: major
     octave    => $octave,     # Default: 0
