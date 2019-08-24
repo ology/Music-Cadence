@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Improve documentation.
+    - Fix a semantic syntax error in eg/cadence.
 
 0.0403 2019-08-24 11:26:43
     - Improve documentation.
