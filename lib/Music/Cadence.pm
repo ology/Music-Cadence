@@ -16,7 +16,9 @@ use namespace::clean;
 
   use Music::Cadence;
 
-  my $mc = Music::Cadence->new(
+  my $mc = Music::Cadence->new;
+
+  $mc = Music::Cadence->new(
     key    => 'C',
     scale  => 'major',
     octave => 4,
