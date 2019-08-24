@@ -24,7 +24,7 @@ throws_ok { $mc->cadence( type => 'unknown' ) }
 throws_ok { $mc->cadence( scale => 'unknown' ) }
     qr/unknown scale/, 'unknown scale';
 
-throws_ok { $mc->cadence( leading => '666' ) }
+throws_ok { $mc->cadence( leading => 666 ) }
     qr/unknown leader/, 'unknown leader';
 
 my $chords = $mc->cadence;
