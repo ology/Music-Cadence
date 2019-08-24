@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0402';
+our $VERSION = '0.0403';
 
 use Moo;
 use Music::Chord::Note;
@@ -90,7 +90,13 @@ has octave => (
 
 =head2 new
 
-  $mc = Music::Cadence->new;
+  $mc = Music::Cadence->new;  # Use defaults
+
+  $mc = Music::Cadence->new(  # Override defaults
+    key    => $key,
+    scale  => $scale,
+    octave => $octave,
+  );
 
 Create a new C<Music::Cadence> object.
 
