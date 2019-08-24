@@ -38,7 +38,7 @@ my $mc = Music::Cadence->new(
 );
 
 for my $i ( 1 .. $max ) {
-    my @notes = map { $scale[ int rand @scale ] } 1 .. 2;
+    my @notes = map { $scale[ int rand @scale ] } 1 .. 3;
     $score->n( $quarter, @notes );
 
     if ( $i % 4 == 0 ) {
