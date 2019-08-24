@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.0403 2019-08-24 11:26:43
     - Improve documentation.
     - Simplify the eg/cadence syntax.
 
