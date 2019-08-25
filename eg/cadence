@@ -35,6 +35,7 @@ my $mc = Music::Cadence->new(
     key    => $note,
     scale  => $type,
     octave => $octave,
+    format => 'midi',
 );
 
 for my $i ( 1 .. $max ) {
