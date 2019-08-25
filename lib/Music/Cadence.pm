@@ -230,6 +230,10 @@ sub _generate_chord {
 
     # Generate the chord notes
     my @notes = $mcn->chord( $note . $type );
+    for ( @notes ) {
+        s/#/s/;
+        s/b/f/;
+    }
 
     # Append the octave if requested
     @notes = map { $_ . $octave } @notes
