@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0406';
+our $VERSION = '0.0407';
 
 use Moo;
 use Music::Chord::Note;
