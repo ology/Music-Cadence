@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0407';
+our $VERSION = '0.0500';
 
 use Moo;
 use Music::Chord::Note;
@@ -18,11 +18,7 @@ use namespace::clean;
 
   my $mc = Music::Cadence->new;
 
-  $mc = Music::Cadence->new(
-    key    => 'C',
-    scale  => 'major',
-    octave => 4,
-  );
+  $mc = Music::Cadence->new( octave => 4 );
 
   my $chords = $mc->cadence( type => 'perfect' );
   # [['G4','B4','D4'], ['C4','E4','G4']]
@@ -32,6 +28,15 @@ use namespace::clean;
     leading => 2,
     octave  => 0,
   ); # [['D','F','A'], ['G','B','D']]
+
+  $mc = Music::Cadence->new(
+    key    => 'C#',
+    octave => 5,
+    format => 'midi',
+  );
+
+  my $chords = $mc->cadence( type => 'perfect' );
+  # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5']]
 
 =head1 DESCRIPTION
 
@@ -88,6 +93,18 @@ has octave => (
     default => sub { 0 },
 );
 
+=head2 format
+
+If C<midi>, convert sharp C<#> to C<s> and C<b> to C<f> after chord
+generation.  Default: C<''> (none)
+
+=cut
+
+has format => (
+    is      => 'ro',
+    default => sub { '' },
+);
+
 =head1 METHODS
 
 =head2 new
@@ -98,6 +115,7 @@ has octave => (
     key    => $key,
     scale  => $scale,
     octave => $octave,
+    format => $format,
   );
 
 Create a new C<Music::Cadence> object.
@@ -171,32 +189,32 @@ sub cadence {
     );
 
     if ( $args{type} eq 'perfect' ) {
-        my $chord = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = _generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
     elsif ( $args{type} eq 'plagal' ) {
-        my $chord = _generate_chord( $args{scale}, $scale[3], $args{octave}, $mtr, $mcn );
+        my $chord = $self->_generate_chord( $args{scale}, $scale[3], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = _generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
     elsif ( $args{type} eq 'half' ) {
-        my $chord = _generate_chord( $args{scale}, $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn );
+        my $chord = $self->_generate_chord( $args{scale}, $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
     elsif ( $args{type} eq 'deceptive' ) {
-        my $chord = _generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
 
         my $note = $args{variation} == 1 ? $scale[5] : $scale[3];
-        $chord = _generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
     else {
@@ -207,7 +225,7 @@ sub cadence {
 }
 
 sub _generate_chord {
-    my ( $scale, $note, $octave, $mtr, $mcn ) = @_;
+    my ( $self, $scale, $note, $octave, $mtr, $mcn ) = @_;
 
     # Know what chords should be diminished
     my %diminished = (
@@ -230,9 +248,12 @@ sub _generate_chord {
 
     # Generate the chord notes
     my @notes = $mcn->chord( $note . $type );
-    for ( @notes ) {
-        s/#/s/;
-        s/b/f/;
+
+    if ( $self->format eq 'midi' ) {
+        for ( @notes ) {
+            s/#/s/;
+            s/b/f/;
+        }
     }
 
     # Append the octave if requested
