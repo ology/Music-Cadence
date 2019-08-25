@@ -286,6 +286,6 @@ L<https://www.musictheoryacademy.com/how-to-read-sheet-music/cadences/>
 
 Evaded cadence
 
-Imperfect cadence
+Imperfect cadences
 
 =cut
