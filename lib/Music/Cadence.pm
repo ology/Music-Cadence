@@ -35,7 +35,7 @@ use namespace::clean;
     format => 'midi',
   );
 
-  my $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence( type => 'perfect' );
   # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5']]
 
 =head1 DESCRIPTION
