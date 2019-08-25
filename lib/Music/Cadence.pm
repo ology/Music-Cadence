@@ -95,8 +95,8 @@ has octave => (
 
 =head2 format
 
-If C<midi>, convert sharp C<#> to C<s> and C<b> to C<f> after chord
-generation.  Default: C<''> (none)
+If C<midi>, convert sharp C<#> to C<s> and flat C<b> to C<f> after
+chord generation.  Default: C<''> (none)
 
 =cut
 
