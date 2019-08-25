@@ -90,4 +90,13 @@ $chords = $mc->cadence(
 );
 is_deeply $chords, [ [qw/ G# C D# /], [qw/ F# A# C# /] ], 'C# deceptive';
 
+$mc = Music::Cadence->new(
+    key    => 'C#',
+    octave => 5,
+    format => 'midi',
+);
+
+$chords = $mc->cadence( type => 'perfect' );
+is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 /] ], 'C# perfect midi';
+
 done_testing();
