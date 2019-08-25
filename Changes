@@ -1,7 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
-    - Add the missing #/b to s/f substitution after a chord is generated.
+    - Add a format attribute to convert #/b to s/f substitution after a chord is generated.
     - Improve eg/cadence.
 
 0.0406 2019-08-24 13:47:09
