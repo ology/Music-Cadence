@@ -14,6 +14,7 @@ isa_ok $mc, 'Music::Cadence';
 is $mc->key, 'C', 'default key';
 is $mc->scale, 'major', 'default scale';
 is $mc->octave, 0, 'default octave';
+is $mc->format, '', 'default format';
 
 throws_ok { $mc->cadence( key => 'X' ) }
     qr/unknown chord/, 'unknown key';
