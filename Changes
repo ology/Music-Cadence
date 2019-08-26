@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Exclude MIDI files from the distribution.
+
+0.0502 2019-08-25 18:44:29
     - Update the module test.
     - Update the module SYNOPSIS.
 
