@@ -5,10 +5,8 @@
 use strict;
 use warnings;
 
-use lib '/Users/gene/sandbox/MIDI-Util/lib';
-use MIDI::Util; # https://metacpan.org/release/MIDI-Util
-use lib '/Users/gene/sandbox/Music-Cadence/lib';
-use Music::Cadence; # https://metacpan.org/release/Music-Cadence
+use MIDI::Util;
+use Music::Cadence;
 use Music::Scales;
 
 my $max    = shift || 16;
@@ -22,6 +20,7 @@ my $half    = 'hn';
 my $quarter = 'qn';
 
 my @scale = get_scale_notes( $note, $type );
+# Transform to MIDI accidentals
 for ( @scale ) {
     s/#/s/;
     s/b/f/;
@@ -39,9 +38,11 @@ my $mc = Music::Cadence->new(
 );
 
 for my $i ( 1 .. $max ) {
+    # Get a random selection of scale notes and add them to the score
     my @notes = map { $scale[ int rand @scale ] } 1 .. 2;
     $score->n( $quarter, $_ ) for @notes;
 
+    # Add a half cadence after every 8 quarter notes
     if ( $i % 4 == 0 ) {
         my $chords = $mc->cadence(
             type    => 'half',
