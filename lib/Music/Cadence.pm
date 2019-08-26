@@ -187,7 +187,7 @@ sub cadence {
     $args{leading}   ||= 1;
     $args{variation} ||= 1;
 
-    die 'unknown leader' if $args{leading} < 1 or $args{leading} > 7;
+    die 'unknown leader' if $args{leading} < 1 || $args{leading} > 7;
 
     my @scale = get_scale_notes( $args{key}, $args{scale} );
 
