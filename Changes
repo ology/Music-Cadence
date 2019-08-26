@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix leader bounds condition.
+
+0.0504 2019-08-25 22:58:32
     - Update the module SYNOPSIS.
     - Comment eg/cadence a bit.
 
