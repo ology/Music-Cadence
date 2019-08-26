@@ -19,10 +19,10 @@ is $mc->format, '', 'default format';
 throws_ok { $mc->cadence( key => 'X' ) }
     qr/unknown chord/, 'unknown key';
 
-throws_ok { $mc->cadence( type => 'unknown' ) }
+throws_ok { $mc->cadence( type => 'foo' ) }
     qr/unknown cadence/, 'unknown cadence';
 
-throws_ok { $mc->cadence( scale => 'unknown' ) }
+throws_ok { $mc->cadence( scale => 'foo' ) }
     qr/unknown scale/, 'unknown scale';
 
 throws_ok { $mc->cadence( leading => 666 ) }
