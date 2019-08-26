@@ -18,14 +18,18 @@ use namespace::clean;
 
   my $mc = Music::Cadence->new;
 
+  my $chords = $mc->cadence( type => 'perfect' );
+  # [['G','B','D'], ['C','E','G']]
+
   $mc = Music::Cadence->new( octave => 4 );
 
-  my $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence( type => 'perfect' );
   # [['G4','B4','D4'], ['C4','E4','G4']]
 
   $chords = $mc->cadence(
     type    => 'half',
     leading => 2,
+    octave  => 0,
   ); # [['D','F','A'], ['G','B','D']]
 
   $mc = Music::Cadence->new(
