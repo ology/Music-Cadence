@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0501';
+our $VERSION = '0.0502';
 
 use Moo;
 use Music::Chord::Note;
@@ -28,6 +28,14 @@ use namespace::clean;
     leading => 2,
     octave  => 0,
   ); # [['D','F','A'], ['G','B','D']]
+
+  $mc = Music::Cadence->new(
+    key    => 'C#',
+    octave => 5,
+  );
+
+  $chords = $mc->cadence( type => 'perfect' );
+  # [['G#5','C5','D#5'], ['C#5','F5','G#5']]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
