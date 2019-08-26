@@ -1,7 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
-    - Update test.
+    - Update the module test.
+    - Update the module SYNOPSIS.
 
 0.0501 2019-08-24 21:50:19
     - Improve documentation.
