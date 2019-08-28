@@ -106,14 +106,17 @@ has octave => (
 
 =head2 format
 
+The output format to use.  Default: C<isobase> (i.e. "bare note
+names")
+
 If C<midi>, convert sharp C<#> to C<s> and flat C<b> to C<f> after
-chord generation.  Default: C<''> (none)
+chord generation.
 
 =cut
 
 has format => (
     is      => 'ro',
-    default => sub { '' },
+    default => sub { 'isobase' },
 );
 
 =head1 METHODS
@@ -265,6 +268,9 @@ sub _generate_chord {
             s/#/s/;
             s/b/f/;
         }
+    }
+    elsif ( $self->format ne 'isobase' ) {
+        die 'unknown format';
     }
 
     # Append the octave if requested
