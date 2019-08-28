@@ -14,7 +14,7 @@ isa_ok $mc, 'Music::Cadence';
 is $mc->key, 'C', 'default key';
 is $mc->scale, 'major', 'default scale';
 is $mc->octave, 0, 'default octave';
-is $mc->format, '', 'default format';
+is $mc->format, 'isobase', 'default format';
 
 throws_ok { $mc->cadence( key => 'X' ) }
     qr/unknown chord/, 'unknown key';
@@ -27,6 +27,12 @@ throws_ok { $mc->cadence( scale => 'foo' ) }
 
 throws_ok { $mc->cadence( leading => 666 ) }
     qr/unknown leader/, 'unknown leader';
+
+$mc = Music::Cadence->new( format => 'foo' );
+throws_ok { $mc->cadence }
+    qr/unknown format/, 'unknown format';
+
+$mc = Music::Cadence->new;
 
 my $chords = $mc->cadence;
 is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C perfect';
