@@ -103,7 +103,7 @@ $mc = Music::Cadence->new(
     format => 'midi',
 );
 
-$chords = $mc->cadence( type => 'perfect' );
+$chords = $mc->cadence;
 is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 Cs6 /] ], 'C# 5 perfect midi';
 
 $mc = Music::Cadence->new(
@@ -111,7 +111,7 @@ $mc = Music::Cadence->new(
     format => 'midinum',
 );
 
-$chords = $mc->cadence( type => 'perfect' );
+$chords = $mc->cadence;
 is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67, 72 ] ], 'C 4 perfect midinum';
 
 $mc = Music::Cadence->new(
@@ -119,7 +119,7 @@ $mc = Music::Cadence->new(
     format => 'midinum',
 );
 
-$chords = $mc->cadence( type => 'perfect' );
+$chords = $mc->cadence;
 is_deeply $chords, [ [ 7, 11, 2 ], [ 0, 4, 7, 12 ] ], 'C -1 perfect midinum';
 
 $mc = Music::Cadence->new;
