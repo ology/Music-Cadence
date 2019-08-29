@@ -35,16 +35,16 @@ throws_ok { $mc->cadence }
 $mc = Music::Cadence->new;
 
 my $chords = $mc->cadence;
-is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C 0 perfect';
+is_deeply $chords, [ [qw/ G B D /], [qw/ C E G C /] ], 'C 0 perfect';
 
 $chords = $mc->cadence(
     key    => 'C#',
     octave => 4,
 );
-is_deeply $chords, [ [qw/ G#4 C4 D#4 /], [qw/ C#4 F4 G#4 /] ], 'C# 4 perfect';
+is_deeply $chords, [ [qw/ G#4 C4 D#4 /], [qw/ C#4 F4 G#4 C#5 /] ], 'C# 4 perfect';
 
 $chords = $mc->cadence( type => 'plagal' );
-is_deeply $chords, [ [qw/ F A C /], [qw/ C E G /] ], 'C 4 plagal';
+is_deeply $chords, [ [qw/ F A C /], [qw/ C E G /] ], 'C 0 plagal';
 
 $chords = $mc->cadence(
     key  => 'C#',
@@ -104,7 +104,7 @@ $mc = Music::Cadence->new(
 );
 
 $chords = $mc->cadence( type => 'perfect' );
-is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 /] ], 'C# 5 perfect midi';
+is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 Cs6 /] ], 'C# 5 perfect midi';
 
 $mc = Music::Cadence->new(
     key    => 'C',
@@ -113,7 +113,7 @@ $mc = Music::Cadence->new(
 );
 
 $chords = $mc->cadence( type => 'perfect' );
-is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67 ] ], 'C 4 perfect midinum';
+is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67, 72 ] ], 'C 4 perfect midinum';
 
 $mc = Music::Cadence->new(
     key    => 'C',
@@ -122,6 +122,6 @@ $mc = Music::Cadence->new(
 );
 
 $chords = $mc->cadence( type => 'perfect' );
-is_deeply $chords, [ [ 7, 11, 2 ], [ 0, 4, 7 ] ], 'C -1 perfect midinum';
+is_deeply $chords, [ [ 7, 11, 2 ], [ 0, 4, 7, 12 ] ], 'C -1 perfect midinum';
 
 done_testing();
