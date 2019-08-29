@@ -239,8 +239,8 @@ sub cadence {
         else {
             if ( $top =~ /^(.+?)(\d+)$/ ) {
                 my $note   = $1;
-                my $degree = $2;
-                $top = $note . ++$degree;
+                my $octave = $2;
+                $top = $note . ++$octave;
             }
         }
         push @$chord, $top;
