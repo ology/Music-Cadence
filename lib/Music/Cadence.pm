@@ -20,12 +20,12 @@ use namespace::clean;
   my $mc = Music::Cadence->new;
 
   my $chords = $mc->cadence( type => 'perfect' );
-  # [['G','B','D'], ['C','E','G']]
+  # [['G','B','D'], ['C','E','G','C']]
 
   $mc = Music::Cadence->new( octave => 4 );
 
   $chords = $mc->cadence( type => 'perfect' );
-  # [['G4','B4','D4'], ['C4','E4','G4']]
+  # [['G4','B4','D4'], ['C4','E4','G4','C5']]
 
   $chords = $mc->cadence(
     type    => 'half',
@@ -39,7 +39,7 @@ use namespace::clean;
   );
 
   $chords = $mc->cadence( type => 'perfect' );
-  # [['G#5','C5','D#5'], ['C#5','F5','G#5']]
+  # [['G#5','C5','D#5'], ['C#5','F5','G#5','C#6']]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
@@ -48,7 +48,7 @@ use namespace::clean;
   );
 
   $chords = $mc->cadence( type => 'perfect' );
-  # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5']]
+  # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5','Cs6']]
 
   $mc = Music::Cadence->new(
     key    => 'C',
@@ -57,7 +57,7 @@ use namespace::clean;
   );
 
   $chords = $mc->cadence( type => 'perfect' );
-  # [[67,71,62], [60,64,67]]
+  # [[67,71,62], [60,64,67,72]]
 
 =head1 DESCRIPTION
 
@@ -223,6 +223,18 @@ sub cadence {
         push @$cadence, $chord;
 
         $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        my $top = $chord->[0];
+        if ( $self->format eq 'midinum' ) {
+            $top += 12;
+        }
+        else {
+            if ( $top =~ /^(.+?)(\d+)$/ ) {
+                my $note   = $1;
+                my $degree = $2;
+                $top = $note . ++$degree;
+            }
+        }
+        push @$chord, $top;
         push @$cadence, $chord;
     }
     elsif ( $args{type} eq 'plagal' ) {
