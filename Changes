@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix documentation error.
+
+0.0601 2019-08-29 10:49:02
     - Improve documentation.
     - Remove octave setting for midinum.
     - Update the test cases.
