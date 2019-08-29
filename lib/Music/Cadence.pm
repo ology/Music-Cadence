@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0700';
+our $VERSION = '0.0800';
 
 use Moo;
 use Music::Chord::Note;
@@ -169,13 +169,22 @@ Create a new C<Music::Cadence> object.
 Return an array reference of the chords of the cadence B<type> based
 on the given B<key> and B<scale> name.
 
-The B<variation> applies to the C<deceptive> cadence and determines
-the final chord.  If given as C<1>, the C<vi> chord is used.  If given
-as C<2>, the C<IV> chord is used.
+The B<variation> applies to the C<deceptive> and C<imperfect> cadences.
+
+If the B<type> is C<deceptive>, the B<variation> determines the final
+chord:  For C<1>, the C<vi> chord is used.  For C<2>, the C<IV> chord
+is used.
+
+If the B<type> is C<imperfect>, the B<variation> determines the kind
+of cadence generated.  For C<1>, a C<perfect> cadence is rendered but
+the highest voice is not the tonic.  For C<3>, a C<perfect> cadence is
+rendered but the C<V> chord is replaced with the C<vii diminished>
+chord.
 
 Supported cadences are:
 
   perfect
+  imperfect
   half
   plagal
   deceptive
@@ -235,6 +244,14 @@ sub cadence {
             }
         }
         push @$chord, $top;
+        push @$cadence, $chord;
+    }
+    elsif ( $args{type} eq 'imperfect' ) {
+        my $note = $args{variation} == 3 ? $scale[6] : $scale[4];
+        my $chord = $self->_generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
+        push @$cadence, $chord;
+
+        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
     }
     elsif ( $args{type} eq 'plagal' ) {
@@ -338,6 +355,6 @@ Use L<Music::Chord::Positions>!
 
 Evaded cadence
 
-Imperfect cadences
+Imperfect inverted cadence (2nd variation)
 
 =cut

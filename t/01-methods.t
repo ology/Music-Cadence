@@ -88,14 +88,14 @@ $chords = $mc->cadence(
 is_deeply $chords, [ [qw/ B D F /], [qw/ B D F /] ], 'E 0 phrygian half';
 
 $chords = $mc->cadence( type => 'deceptive' );
-is_deeply $chords, [ [qw/ G B D /], [qw/ A C E /] ], 'C 0 deceptive';
+is_deeply $chords, [ [qw/ G B D /], [qw/ A C E /] ], 'C 0 deceptive 1';
 
 $chords = $mc->cadence(
     key       => 'C#',
     type      => 'deceptive',
     variation => 2,
 );
-is_deeply $chords, [ [qw/ G# C D# /], [qw/ F# A# C# /] ], 'C# 0 deceptive';
+is_deeply $chords, [ [qw/ G# C D# /], [qw/ F# A# C# /] ], 'C# 0 deceptive 2';
 
 $mc = Music::Cadence->new(
     key    => 'C#',
@@ -107,7 +107,6 @@ $chords = $mc->cadence( type => 'perfect' );
 is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 Cs6 /] ], 'C# 5 perfect midi';
 
 $mc = Music::Cadence->new(
-    key    => 'C',
     octave => 4,
     format => 'midinum',
 );
@@ -116,12 +115,22 @@ $chords = $mc->cadence( type => 'perfect' );
 is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67, 72 ] ], 'C 4 perfect midinum';
 
 $mc = Music::Cadence->new(
-    key    => 'C',
     octave => -1,
     format => 'midinum',
 );
 
 $chords = $mc->cadence( type => 'perfect' );
 is_deeply $chords, [ [ 7, 11, 2 ], [ 0, 4, 7, 12 ] ], 'C -1 perfect midinum';
+
+$mc = Music::Cadence->new;
+
+$chords = $mc->cadence( type => 'imperfect' );
+is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C 0 imperfect 1';
+
+$chords = $mc->cadence(
+    type      => 'imperfect',
+    variation => 3,
+);
+is_deeply $chords, [ [qw/ B D F /], [qw/ C E G /] ], 'C 0 imperfect 3';
 
 done_testing();
