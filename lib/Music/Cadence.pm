@@ -351,8 +351,6 @@ L<https://www.musictheoryacademy.com/how-to-read-sheet-music/cadences/>
 
 =head1 TO DO
 
-Use L<Music::Chord::Positions>!
-
 Evaded cadence
 
 Imperfect inverted cadence (2nd variation)
