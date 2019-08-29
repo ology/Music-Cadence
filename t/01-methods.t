@@ -106,4 +106,12 @@ $mc = Music::Cadence->new(
 $chords = $mc->cadence( type => 'perfect' );
 is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 /] ], 'C# perfect midi';
 
+$mc = Music::Cadence->new(
+    key    => 'C',
+    format => 'midinum',
+);
+
+$chords = $mc->cadence( type => 'perfect' );
+is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67 ] ], 'C perfect midinum';
+
 done_testing();

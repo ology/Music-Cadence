@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add the "midinum" output format.
     - Improve documentation.
 
 0.0504 2019-08-25 22:58:32

@@ -2,10 +2,11 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0504';
+our $VERSION = '0.0600';
 
 use Moo;
 use Music::Chord::Note;
+use Music::Note;
 use Music::Scales;
 use Music::ToRoman;
 
@@ -48,6 +49,14 @@ use namespace::clean;
 
   $chords = $mc->cadence( type => 'perfect' );
   # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5']]
+
+  $mc = Music::Cadence->new(
+    key    => 'C',
+    format => 'midinum',
+  );
+
+  $chords = $mc->cadence( type => 'perfect' );
+  # [[67,71,62], [60,64,67]]
 
 =head1 DESCRIPTION
 
@@ -111,6 +120,8 @@ names")
 
 If C<midi>, convert sharp C<#> to C<s> and flat C<b> to C<f> after
 chord generation.
+
+If C<midinum>, convert notes to their numerical MIDI equivalents.
 
 =cut
 
@@ -269,13 +280,17 @@ sub _generate_chord {
             s/b/f/;
         }
     }
+    elsif ( $self->format eq 'midinum' ) {
+        $octave ||= 4;
+        @notes = map { Music::Note->new( $_ . $octave, 'ISO' )->format('midinum') } @notes;
+    }
     elsif ( $self->format ne 'isobase' ) {
         die 'unknown format';
     }
 
     # Append the octave if requested
     @notes = map { $_ . $octave } @notes
-        if $octave;
+        if $octave && $self->format ne 'midinum';
 
     return \@notes;
 }
@@ -290,6 +305,8 @@ The F<eg/cadence> and F<t/01-methods.t> files in this distribution.
 L<Moo>
 
 L<Music::Chord::Note>
+
+L<Music::Note>
 
 L<Music::Scales>
 
