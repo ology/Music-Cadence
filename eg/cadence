@@ -5,6 +5,7 @@
 use strict;
 use warnings;
 
+use lib '/Users/gene/sandbox/MIDI-Util/lib';
 use MIDI::Util;
 use Music::Cadence;
 use Music::Scales;
@@ -55,7 +56,7 @@ for my $i ( 1 .. $max ) {
 my $chords = $mc->cadence( type => 'deceptive' );
 $score->n( $half, @$_ ) for @$chords;
 
-$chords = $mc->cadence( type => 'plagal' );
+$chords = $mc->cadence( type => 'perfect' );
 $score->n( $half, @$_ ) for @$chords;
 
 $score->write_score("$0.mid");
