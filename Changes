@@ -1,7 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix the perfect authentic cadence top note.
     - Fix documentation error.
+    - Make the final eg/cadence perfect instead of plagal.
 
 0.0601 2019-08-29 10:49:02
     - Improve documentation.
