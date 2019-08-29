@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0600';
+our $VERSION = '0.0601';
 
 use Moo;
 use Music::Chord::Note;
@@ -52,6 +52,7 @@ use namespace::clean;
 
   $mc = Music::Cadence->new(
     key    => 'C',
+    octave => 4,
     format => 'midinum',
   );
 
@@ -103,8 +104,15 @@ has scale => (
 
 =head2 octave
 
-The octave to append to chord notes.  Default: C<0> meaning "do not
-append."
+The octave to either append to named chord notes (for C<midi> or
+C<isobase> format) or to determine the correct C<midinum> note number.
+
+Default: C<0>
+
+If the B<format> is C<midi> or C<isobase>, setting this to C<0> means
+"do not append."
+
+The C<midinum> range for this attribute is from C<-1> to C<10>.
 
 =cut
 
@@ -281,7 +289,6 @@ sub _generate_chord {
         }
     }
     elsif ( $self->format eq 'midinum' ) {
-        $octave ||= 4;
         @notes = map { Music::Note->new( $_ . $octave, 'ISO' )->format('midinum') } @notes;
     }
     elsif ( $self->format ne 'isobase' ) {

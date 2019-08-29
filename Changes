@@ -1,6 +1,11 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Improve documentation.
+    - Remove octave setting for midinum.
+    - Update the test cases.
+
+0.0600 2019-08-28 20:41:25
     - Add the "midinum" output format.
     - Improve documentation.
 
