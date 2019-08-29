@@ -19,12 +19,12 @@ use namespace::clean;
 
   my $mc = Music::Cadence->new;
 
-  my $chords = $mc->cadence( type => 'perfect' );
+  my $chords = $mc->cadence;
   # [['G','B','D'], ['C','E','G','C']]
 
   $mc = Music::Cadence->new( octave => 4 );
 
-  $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence;
   # [['G4','B4','D4'], ['C4','E4','G4','C5']]
 
   $chords = $mc->cadence(
@@ -38,7 +38,7 @@ use namespace::clean;
     octave => 5,
   );
 
-  $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence;
   # [['G#5','C5','D#5'], ['C#5','F5','G#5','C#6']]
 
   $mc = Music::Cadence->new(
@@ -47,7 +47,7 @@ use namespace::clean;
     format => 'midi',
   );
 
-  $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence;
   # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5','Cs6']]
 
   $mc = Music::Cadence->new(
@@ -56,7 +56,7 @@ use namespace::clean;
     format => 'midinum',
   );
 
-  $chords = $mc->cadence( type => 'perfect' );
+  $chords = $mc->cadence;
   # [[67,71,62], [60,64,67,72]]
 
 =head1 DESCRIPTION
