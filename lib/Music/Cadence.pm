@@ -178,8 +178,8 @@ is used.
 If the B<type> is C<imperfect>, the B<variation> determines the kind
 of cadence generated.  For C<1>, a C<perfect> cadence is rendered but
 the highest voice is not the tonic.  For C<3>, a C<perfect> cadence is
-rendered but the C<V> chord is replaced with the C<vii diminished>
-chord.
+rendered but (in a major key) the C<V> chord is replaced with the
+C<vii diminished> chord.
 
 Supported cadences are:
 
