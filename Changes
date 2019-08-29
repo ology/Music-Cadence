@@ -1,8 +1,10 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.0801 2019-08-29 15:37:55
     - Improve documentation ever so slightly.
-    - Cleaned up test code.
+    - Clean up test code.
 
 0.0800 2019-08-29 15:00:10
     - Add support for 2 of 3 imperfect cadence variations.
