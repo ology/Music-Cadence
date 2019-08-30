@@ -205,7 +205,7 @@ is replaced with the seventh.  So in a major key, the C<V> chord would
 be replaced with the C<vii diminished> chord.
 
 For an C<imperfect> cadence, if the B<inversion> is set to a hash
-referenece of numbered keys, the values are the types of inversions to
+reference of numbered keys, the values are the types of inversions to
 apply to the chords of the cadence.  For example:
 
   inversion => { 1 => 2, 2 => 1 },
@@ -214,7 +214,7 @@ Says, "Apply the second inversion to the first chord of the cadence,
 and apply the first inversion to the second chord."
 
 To B<not> apply an inversion to an inverted imperfect cadence chord,
-either do not include the numbered chord in the hash referenece, or
+either do not include the numbered chord in the hash reference, or
 set its value to C<0> zero.
 
 The B<leading> chord is a number (1-7) for each diatonic scale chord
