@@ -165,6 +165,6 @@ $chords = $mc->cadence(
     type      => 'imperfect',
     inversion => { 1 => 1, 2 => 1 },
 );
-is_deeply $chords, [ [qw/ B4 D4 G4 /], [qw/ E4 G4 C4 /] ], 'C4 4 imperfect inversion 1-1,2-1';
+is_deeply $chords, [ [qw/ B4 D4 G4 /], [qw/ E4 G4 C4 /] ], 'C 4 imperfect inversion 1-1,2-1';
 
 done_testing();
