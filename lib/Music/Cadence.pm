@@ -242,7 +242,7 @@ sub cadence {
 
     my $key       = $args{key} || $self->key;
     my $scale     = $args{scale} || $self->scale;
-    my $octave    = $args{octave} || $self->octave;
+    my $octave    = $args{octave} // $self->octave;
     my $type      = $args{type} || 'perfect';
     my $leading   = $args{leading} || 1;
     my $variation = $args{variation} || 1;
