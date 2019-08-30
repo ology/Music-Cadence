@@ -69,7 +69,7 @@ $chords = $mc->cadence(
     leading   => 2,
     inversion => { 1 => 1 },
 );
-is_deeply $chords, [ [qw/ F A D /], [qw/ G B D /] ], 'C 0 half 2 inverted';
+is_deeply $chords, [ [qw/ F A D /], [qw/ G B D /] ], 'C 0 half 2 inverted 1-1';
 
 $chords = $mc->cadence(
     key     => 'C#',
