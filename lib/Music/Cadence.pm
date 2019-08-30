@@ -240,31 +240,31 @@ sub cadence {
 
     my $cadence = [];
 
-    $args{key}       ||= $self->key;
-    $args{scale}     ||= $self->scale;
-    $args{octave}    //= $self->octave;
-    $args{type}      ||= 'perfect';
-    $args{leading}   ||= 1;
-    $args{variation} ||= 1;
-    $args{inversion} //= 0;
+    my $key       = $args{key} || $self->key;
+    my $scale     = $args{scale} || $self->scale;
+    my $octave    = $args{octave} || $self->octave;
+    my $type      = $args{type} || 'perfect';
+    my $leading   = $args{leading} || 1;
+    my $variation = $args{variation} || 1;
+    my $inversion = $args{inversion} || 0;
 
-    die 'unknown leader' if $args{leading} < 1 or $args{leading} > 7;
+    die 'unknown leader' if $leading < 1 or $leading > 7;
 
-    my @scale = get_scale_notes( $args{key}, $args{scale} );
+    my @scale = get_scale_notes( $key, $scale );
 
     my $mcn = Music::Chord::Note->new;
 
     my $mtr = Music::ToRoman->new(
-        scale_note => $args{key},
-        scale_name => $args{scale},
+        scale_note => $key,
+        scale_name => $scale,
         chords     => 0,
     );
 
-    if ( $args{type} eq 'perfect' ) {
-        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+    if ( $type eq 'perfect' ) {
+        my $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $scale, $scale[0], $octave, $mtr, $mcn );
         my $top = $chord->[0];
         if ( $self->format eq 'midinum' ) {
             $top += 12;
@@ -279,47 +279,47 @@ sub cadence {
         push @$chord, $top;
         push @$cadence, $chord;
     }
-    elsif ( $args{type} eq 'imperfect' && $args{inversion} ) {
-        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
-        $chord = $self->_invert_chord( $chord, $args{inversion}->{1}, $args{octave} )
-            if $args{inversion}->{1};
+    elsif ( $type eq 'imperfect' && $inversion ) {
+        my $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $inversion->{1}, $octave )
+            if $inversion->{1};
         push @$cadence, $chord;
 
-        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
-        $chord = $self->_invert_chord( $chord, $args{inversion}->{2}, $args{octave} )
-            if $args{inversion}->{2};
+        $chord = $self->_generate_chord( $scale, $scale[0], $octave, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $inversion->{2}, $octave )
+            if $inversion->{2};
         push @$cadence, $chord;
     }
-    elsif ( $args{type} eq 'imperfect' ) {
-        my $note = $args{variation} == 1 ? $scale[4] : $scale[6];
-        my $chord = $self->_generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
+    elsif ( $type eq 'imperfect' ) {
+        my $note = $variation == 1 ? $scale[4] : $scale[6];
+        my $chord = $self->_generate_chord( $scale, $note, $octave, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $scale, $scale[0], $octave, $mtr, $mcn );
         push @$cadence, $chord;
     }
-    elsif ( $args{type} eq 'plagal' ) {
-        my $chord = $self->_generate_chord( $args{scale}, $scale[3], $args{octave}, $mtr, $mcn );
+    elsif ( $type eq 'plagal' ) {
+        my $chord = $self->_generate_chord( $scale, $scale[3], $octave, $mtr, $mcn );
         push @$cadence, $chord;
 
-        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $scale, $scale[0], $octave, $mtr, $mcn );
         push @$cadence, $chord;
     }
-    elsif ( $args{type} eq 'half' ) {
-        my $chord = $self->_generate_chord( $args{scale}, $scale[ $args{leading} - 1 ], $args{octave}, $mtr, $mcn );
-        $chord = $self->_invert_chord( $chord, $args{inversion}->{1}, $args{octave} )
-            if $args{inversion} && $args{inversion}->{1};
+    elsif ( $type eq 'half' ) {
+        my $chord = $self->_generate_chord( $scale, $scale[ $leading - 1 ], $octave, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $inversion->{1}, $octave )
+            if $inversion && $inversion->{1};
         push @$cadence, $chord;
 
-        $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+        $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
         push @$cadence, $chord;
     }
-    elsif ( $args{type} eq 'deceptive' ) {
-        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+    elsif ( $type eq 'deceptive' ) {
+        my $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
         push @$cadence, $chord;
 
-        my $note = $args{variation} == 1 ? $scale[5] : $scale[3];
-        $chord = $self->_generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
+        my $note = $variation == 1 ? $scale[5] : $scale[3];
+        $chord = $self->_generate_chord( $scale, $note, $octave, $mtr, $mcn );
         push @$cadence, $chord;
     }
     else {
