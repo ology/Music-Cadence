@@ -344,9 +344,9 @@ sub _invert_chord {
         $notes = [ grep { s/\d+// } @$notes ]
             if $octave;
 
-        my @pitches = map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$notes;
+        my $pitches = [ map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$notes ];
 
-        my $inverted = $mcp->chord_inv( \@pitches, inv_num => $inversion );
+        my $inverted = $mcp->chord_inv( $pitches, inv_num => $inversion );
 
         $notes = [ map { Music::Note->new( $_, 'midinum' )->format('isobase') } @$inverted ];
 
