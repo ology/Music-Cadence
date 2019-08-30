@@ -54,29 +54,29 @@ is_deeply $chords, [ [qw/ F# A# C# /], [qw/ C# F G# /] ], 'C# 0 plagal';
 
 $chords = $mc->cadence(
     type    => 'half',
+    leading => 7,
+);
+is_deeply $chords, [ [qw/ B D F /], [qw/ G B D /] ], 'C 0 half 7';
+
+$chords = $mc->cadence(
+    type    => 'half',
     leading => 2,
 );
-is_deeply $chords, [ [qw/ D F A /], [qw/ G B D /] ], 'C 0 half';
+is_deeply $chords, [ [qw/ D F A /], [qw/ G B D /] ], 'C 0 half 2';
 
 $chords = $mc->cadence(
     type      => 'half',
     leading   => 2,
     inversion => { 1 => 1 },
 );
-is_deeply $chords, [ [qw/ F A D /], [qw/ G B D /] ], 'C 0 half inverted';
+is_deeply $chords, [ [qw/ F A D /], [qw/ G B D /] ], 'C 0 half 2 inverted';
 
 $chords = $mc->cadence(
     key     => 'C#',
     type    => 'half',
     leading => 2,
 );
-is_deeply $chords, [ [qw/ D# F# A# /], [qw/ G# C D# /] ], 'C# 0 half';
-
-$chords = $mc->cadence(
-    type    => 'half',
-    leading => 7,
-);
-is_deeply $chords, [ [qw/ B D F /], [qw/ G B D /] ], 'C 0 half';
+is_deeply $chords, [ [qw/ D# F# A# /], [qw/ G# C D# /] ], 'C# 0 half 2';
 
 $chords = $mc->cadence(
     key     => 'D',
