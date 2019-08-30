@@ -32,7 +32,8 @@ use namespace::clean;
     type    => 'half',
     leading => 2,
     octave  => 0,
-  ); # [['D','F','A'], ['G','B','D']]
+  );
+  # [['D','F','A'], ['G','B','D']]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
