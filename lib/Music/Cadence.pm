@@ -2,10 +2,11 @@ package Music::Cadence;
 
 # ABSTRACT: Provide musical cadence chords
 
-our $VERSION = '0.0801';
+our $VERSION = '0.0900';
 
 use Moo;
 use Music::Chord::Note;
+use Music::Chord::Positions;
 use Music::Note;
 use Music::Scales;
 use Music::ToRoman;
@@ -59,12 +60,25 @@ use namespace::clean;
   $chords = $mc->cadence;
   # [[67,71,62], [60,64,67,72]]
 
+  $mc = Music::Cadence->new;
+
+  $chords = $mc->cadence(
+    octave    => 4,
+    type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 1 },
+  );
+  # [['B4','D4','G4'], ['E4','G4','C4']]
+
 =head1 DESCRIPTION
 
-C<Music::Cadence> provides musical cadence chords.
+C<Music::Cadence> provides a pair of musical cadence chords.
 
-* This module is a naive implementation of the actual theory.  YMMV.
-Patches welcome.
+These chords are usually added to the end of a musical phrase, and
+are used to suggest a sense of anticipation, pause, finality, etc.
+
+B<*> This module is a naive implementation of the actual theory.
+Currently, only chords of 3 notes are generated.  YMMV.  Patches
+welcome.
 
 =head1 ATTRIBUTES
 
@@ -164,30 +178,44 @@ Create a new C<Music::Cadence> object.
     type      => $type,       # Default: perfect
     leading   => $leading,    # Default: 1
     variation => $variation,  # Default: 1
+    inversion => $inversion,  # Default: 0
   );
 
 Return an array reference of the chords of the cadence B<type> based
 on the given B<key> and B<scale> name.
 
+Supported cadences are:
+
+  deceptive
+  half
+  imperfect
+  perfect
+  plagal
+
 The B<variation> applies to the C<deceptive> and C<imperfect> cadences.
 
 If the B<type> is C<deceptive>, the B<variation> determines the final
-chord:  For C<1>, the C<vi> chord is used.  For C<2>, the C<IV> chord
-is used.
+chord.  If it is set to C<1>, the C<vi> chord is used.  For C<2>, the
+C<IV> chord is used.
 
-If the B<type> is C<imperfect>, the B<variation> determines the kind
-of cadence generated.  For C<1>, a C<perfect> cadence is rendered but
-the highest voice is not the tonic.  For C<3>, a C<perfect> cadence is
-rendered but (in a major key) the C<V> chord is replaced with the
-C<vii diminished> chord.
+If the B<type> is C<imperfect> and there is no B<inversion>, the
+B<variation> determines the kind of C<perfect> cadence generated.  For
+C<1>, the highest voice is not the tonic.  For C<2>, the fifth chord
+is replaced with the seventh.  So in a major key, the C<V> chord would
+be replaced with the C<vii diminished> chord.
 
-Supported cadences are:
+For an C<imperfect> cadence, if the B<inversion> is set to a hash
+referenece of numbered keys, the values are the types of inversions to
+apply to the chords of the cadence.  For example:
 
-  perfect
-  imperfect
-  half
-  plagal
-  deceptive
+  inversion => { 1 => 2, 2 => 1 },
+
+Says, "Apply the second inversion to the first chord of the cadence,
+and apply the first inversion to the second chord."
+
+To B<not> apply an inversion to an inverted imperfect cadence chord,
+either do not include the numbered chord in the hash referenece, or
+set its value to C<0> zero.
 
 The B<leading> chord is a number (1-7) for each diatonic scale chord
 to use for the first C<half> cadence chord.  For the key of C<C major>
@@ -214,6 +242,7 @@ sub cadence {
     $args{type}      ||= 'perfect';
     $args{leading}   ||= 1;
     $args{variation} ||= 1;
+    $args{inversion} //= 0;
 
     die 'unknown leader' if $args{leading} < 1 or $args{leading} > 7;
 
@@ -246,8 +275,19 @@ sub cadence {
         push @$chord, $top;
         push @$cadence, $chord;
     }
+    elsif ( $args{type} eq 'imperfect' && $args{inversion} ) {
+        my $chord = $self->_generate_chord( $args{scale}, $scale[4], $args{octave}, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $args{inversion}->{1}, $args{octave} )
+            if $args{inversion}->{1};
+        push @$cadence, $chord;
+
+        $chord = $self->_generate_chord( $args{scale}, $scale[0], $args{octave}, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $args{inversion}->{2}, $args{octave} )
+            if $args{inversion}->{2};
+        push @$cadence, $chord;
+    }
     elsif ( $args{type} eq 'imperfect' ) {
-        my $note = $args{variation} == 3 ? $scale[6] : $scale[4];
+        my $note = $args{variation} == 1 ? $scale[4] : $scale[6];
         my $chord = $self->_generate_chord( $args{scale}, $note, $args{octave}, $mtr, $mcn );
         push @$cadence, $chord;
 
@@ -281,6 +321,36 @@ sub cadence {
     }
 
     return $cadence;
+}
+
+sub _invert_chord {
+    my ( $self, $chord, $inversion, $octave ) = @_;
+
+    my $mcp = Music::Chord::Positions->new;
+
+    if ( $self->format eq 'midinum' ) {
+        $chord = $mcp->chord_inv( $chord, inv_num => $inversion );
+    }
+    else {
+        # Perform these gymnastics to convert from named notes to inverted named notes
+        my $notes = $chord;
+
+        $notes = [ grep { s/\d+// } @$notes ]
+            if $octave;
+
+        my @pitches = map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$notes;
+
+        my $inverted = $mcp->chord_inv( \@pitches, inv_num => $inversion );
+
+        $notes = [ map { Music::Note->new( $_, 'midinum' )->format('isobase') } @$inverted ];
+
+        $notes = [ map { $_ . $octave } @$notes ]
+            if $octave;
+
+        $chord = $notes;
+    }
+
+    return $chord;
 }
 
 sub _generate_chord {
@@ -338,6 +408,8 @@ The F<eg/cadence> and F<t/01-methods.t> files in this distribution.
 L<Moo>
 
 L<Music::Chord::Note>
+
+L<Music::Chord::Positions>
 
 L<Music::Note>
 

@@ -115,6 +115,15 @@ $chords = $mc->cadence;
 is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67, 72 ] ], 'C 4 perfect midinum';
 
 $mc = Music::Cadence->new(
+    octave => 0,
+    format => 'midinum',
+);
+
+$chords = $mc->cadence;
+is_deeply $chords, [ [ 19, 23, 14 ], [ 12, 16, 19, 24 ] ], 'C 0 perfect midinum';
+
+
+$mc = Music::Cadence->new(
     octave => -1,
     format => 'midinum',
 );
@@ -129,8 +138,33 @@ is_deeply $chords, [ [qw/ G B D /], [qw/ C E G /] ], 'C 0 imperfect 1';
 
 $chords = $mc->cadence(
     type      => 'imperfect',
-    variation => 3,
+    variation => 2,
 );
-is_deeply $chords, [ [qw/ B D F /], [qw/ C E G /] ], 'C 0 imperfect 3';
+is_deeply $chords, [ [qw/ B D F /], [qw/ C E G /] ], 'C 0 imperfect 2';
+
+$chords = $mc->cadence(
+    type      => 'imperfect',
+    inversion => { 1 => 1 },
+);
+is_deeply $chords, [ [qw/ B D G /], [qw/ C E G /] ], 'C 0 imperfect inversion 1-1';
+
+$chords = $mc->cadence(
+    type      => 'imperfect',
+    inversion => { 1 => 2 },
+);
+is_deeply $chords, [ [qw/ D G B /], [qw/ C E G /] ], 'C 0 imperfect inversion 1-2';
+
+$chords = $mc->cadence(
+    type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 1 },
+);
+is_deeply $chords, [ [qw/ B D G /], [qw/ E G C /] ], 'C 0 imperfect inversion 1-1,2-1';
+
+$chords = $mc->cadence(
+    octave    => 4,
+    type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 1 },
+);
+is_deeply $chords, [ [qw/ B4 D4 G4 /], [qw/ E4 G4 C4 /] ], 'C4 4 imperfect inversion 1-1,2-1';
 
 done_testing();
