@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1000 2019-08-30 12:59:26
     - Allow optional inversion of the initial half cadence chord.
 
 0.0901 2019-08-30 11:41:32
