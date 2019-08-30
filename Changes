@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix docs.
+
+0.0900 2019-08-30 11:26:14
     - Enable imperfect inverted cadences.
     - Improve documentation again!
     - Enhance test cases.
