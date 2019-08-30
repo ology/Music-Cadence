@@ -338,7 +338,7 @@ sub _invert_chord {
         $chord = $mcp->chord_inv( $chord, inv_num => $inversion );
     }
     else {
-        # Perform gymnastics to convert from named notes to inverted named notes
+        # Perform gymnastics to convert named notes to inverted named notes
         my $notes = $chord;
 
         $notes = [ grep { s/\d+// } @$notes ]
