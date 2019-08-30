@@ -1,6 +1,6 @@
 package Music::Cadence;
 
-# ABSTRACT: Provide musical cadence chords
+# ABSTRACT: Generate musical cadence chords
 
 our $VERSION = '0.1001';
 
@@ -72,7 +72,7 @@ use namespace::clean;
 
 =head1 DESCRIPTION
 
-C<Music::Cadence> provides a pair of musical cadence chords.
+C<Music::Cadence> generates a pair of musical cadence chords.
 
 These chords are usually added to the end of a musical phrase, and
 are used to suggest a sense of anticipation, pause, finality, etc.
