@@ -422,8 +422,4 @@ L<https://en.wikipedia.org/wiki/Cadence>
 
 L<https://www.musictheoryacademy.com/how-to-read-sheet-music/cadences/>
 
-=head1 TO DO
-
-Evaded cadence
-
 =cut
