@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix SYNOPSIS and eg/synopsis.
+
+0.1304 2019-08-31 14:41:05
     - Improve SYNOPSIS.
     - Improve eg/synopsis.
 

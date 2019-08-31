@@ -26,7 +26,6 @@ output($chords);
 
 $chords = $mc->cadence(
     type      => 'imperfect',
-    octave    => 4,
     inversion => { 1 => 1, 2 => 1 },
 );
 output($chords);

@@ -37,7 +37,6 @@ use namespace::clean;
 
   $chords = $mc->cadence(
     type      => 'imperfect',
-    octave    => 4,
     inversion => { 1 => 1, 2 => 1 },
   );
   # [B4 D4 G5], [E4 G4 C5]
