@@ -19,7 +19,6 @@ print Dumper $chords;
 
 $chords = $mc->cadence(
     type    => 'half',
-    octave  => 0,
     leading => 2,
 );
 print Dumper $chords;
