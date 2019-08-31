@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1202 2019-08-31 00:26:11
     - Repair evaded test case.
     - Make an imperfect inverted cadence test case identical to evaded.
     - Illustrate pitch set computation in the SYNOPSIS.
