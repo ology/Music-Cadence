@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Fix POD.
     - Fix SYNOPSIS and eg/synopsis.
 
 0.1304 2019-08-31 14:41:05
