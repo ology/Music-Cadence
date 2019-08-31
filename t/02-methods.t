@@ -174,6 +174,6 @@ $mc = Music::Cadence->new(
 );
 
 $chords = $mc->cadence( type => 'evaded' );
-is_deeply $chords, [ [qw/ F4 G5 B5 D5 /], [qw/ E4 G4 A#4 C5 /] ], 'C7 0 evaded';
+is_deeply $chords, [ [qw/ F4 G5 B5 D5 /], [qw/ E4 G4 A#4 C5 /] ], 'C7 4 evaded';
 
 done_testing();
