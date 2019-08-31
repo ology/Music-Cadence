@@ -2,6 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Add more test cases.
+    - Simplify inversion code.
 
 0.1001 2019-08-30 15:08:03
     - Clean up code.
