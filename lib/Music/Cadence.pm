@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1300';
+our $VERSION = '0.1301';
 
 use Moo;
 use Music::Chord::Note;
@@ -324,15 +324,21 @@ sub cadence {
         push @$cadence, $chord;
     }
     elsif ( $type eq 'evaded' && $self->seven ) {
+        if ( $inversion ) {
+            $inversion->{1} = 3
+                unless defined $inversion->{1};
+            $inversion->{2} = 1
+                unless defined $inversion->{2};
+        }
+        else {
+            $inversion = { 1 => 3, 2 => 1 };
+        }
+
         my $chord = $self->_generate_chord( $key, $scale, $scale_notes[4], $octave );
-        $inversion = { 1 => 3 }
-            unless $inversion && $inversion->{1};
         $chord = $self->_invert_chord( $chord, $inversion->{1}, $octave );
         push @$cadence, $chord;
 
         $chord = $self->_generate_chord( $key, $scale, $scale_notes[0], $octave );
-        $inversion = { 2 => 1 }
-            unless $inversion && $inversion->{2};
         $chord = $self->_invert_chord( $chord, $inversion->{2}, $octave );
         push @$cadence, $chord;
     }
