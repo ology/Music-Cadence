@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1002';
+our $VERSION = '0.1100';
 
 use Moo;
 use Music::Chord::Note;
@@ -69,6 +69,11 @@ use namespace::clean;
     inversion => { 1 => 1, 2 => 1 },
   );
   # [['B4','D4','G4'], ['E4','G4','C4']]
+
+  $mc = Music::Cadence->new( seven => 1 );
+
+  $chords = $mc->cadence;
+  # [['G','B','D','F'], ['C','E','G','A#','C']]
 
 =head1 DESCRIPTION
 
@@ -153,6 +158,17 @@ has format => (
     default => sub { 'isobase' },
 );
 
+=head2 seven
+
+Use 7th chords (of 4 notes).  Default: C<0>
+
+=cut
+
+has seven => (
+    is      => 'ro',
+    default => sub { 0 },
+);
+
 =head1 METHODS
 
 =head2 new
@@ -164,6 +180,7 @@ has format => (
     scale  => $scale,
     octave => $octave,
     format => $format,
+    seven  => $seven,
   );
 
 Create a new C<Music::Cadence> object.
@@ -377,6 +394,9 @@ sub _generate_chord {
     my $roman = $mtr->parse($note);
     my $type  = $roman =~ /^$diminished{$scale}$/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
 
+    $type .= 7
+        if $self->seven;
+
     # Generate the chord notes
     my @notes = $mcn->chord( $note . $type );
 
@@ -402,6 +422,10 @@ sub _generate_chord {
 
 1;
 __END__
+
+=head1 TO DO
+
+Evaded cadence
 
 =head1 SEE ALSO
 
