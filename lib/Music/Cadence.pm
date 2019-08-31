@@ -169,7 +169,7 @@ has format => (
 
 =head2 seven
 
-Use seventh chords (of 4 notes).  Default: C<0>
+Use seventh chords (of 4 notes) instead of triads.  Default: C<0>
 
 =cut
 
