@@ -1,8 +1,11 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1303 2019-08-31 14:27:17
     - Reorganize test cases.
     - Fix documentation.
+    - Add print statements to eg/synopsis.
 
 0.1302 2019-08-31 12:03:50
     - Reorganize the SYNOPSIS.
