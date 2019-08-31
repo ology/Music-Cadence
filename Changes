@@ -1,7 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
-    - Add 7th chord cadences.
+    - Enable 7th chord cadences.
 
 0.1002 2019-08-30 17:20:14
     - Reword ABSTRACT.
