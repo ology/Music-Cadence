@@ -12,7 +12,7 @@ use Music::Scales;
 my $max    = shift || 16;
 my $note   = shift || 'C';
 my $type   = shift || 'major';
-my $octave = shift // 4;
+my $octave = shift || 4;
 my $bpm    = shift || 100;
 my $leads  = shift || '1 2 4 7';
 
