@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1302 2019-08-31 12:03:50
     - Reorganize the SYNOPSIS.
     - Make the module SYNOPSIS an eg/ program.
 
