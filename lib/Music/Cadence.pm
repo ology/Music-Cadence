@@ -67,12 +67,7 @@ use namespace::clean;
   $chords = $mc->cadence;
   # [[67,71,62], [60,64,67,72]]
 
-  $mc = Music::Cadence->new(
-    octave => -1,
-    format => 'midinum',
-  );
-
-  $chords = $mc->cadence;
+  $chords = $mc->cadence( octave => -1 );
   # [[7,11,2], [0,4,7,12]]
 
   $mc = Music::Cadence->new( seven => 1 );
