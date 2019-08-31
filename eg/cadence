@@ -16,8 +16,8 @@ my $octave = shift || 4;
 my $bpm    = shift || 100;
 my $leads  = shift || '1 2 4 7';
 
-my $half    = 'hn';
 my $quarter = 'qn';
+my $half    = 'hn';
 
 my @scale = get_scale_notes( $note, $type );
 # Transform to MIDI accidentals
