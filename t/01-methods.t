@@ -157,6 +157,12 @@ is_deeply $chords, [ [qw/ B D G /], [qw/ C E G /] ], 'C 0 imperfect inversion 1-
 
 $chords = $mc->cadence(
     type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 0 },
+);
+is_deeply $chords, [ [qw/ B D G /], [qw/ C E G /] ], 'C 0 imperfect inversion 1-1,2-0';
+
+$chords = $mc->cadence(
+    type      => 'imperfect',
     inversion => { 1 => 2 },
 );
 is_deeply $chords, [ [qw/ D G B /], [qw/ C E G /] ], 'C 0 imperfect inversion 1-2';
