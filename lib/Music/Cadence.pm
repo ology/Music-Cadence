@@ -354,7 +354,7 @@ sub _invert_chord {
     }
     else {
         # Perform gymnastics to convert named notes to inverted named notes
-        $chord = [ grep { s/\d+// } @$chord ]
+        $chord = [ map { s/\d+//; $_ } @$chord ]
             if $octave;
 
         my $pitches = [ map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$chord ];
