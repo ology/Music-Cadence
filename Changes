@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Improve eg/cadence slightly.
 
 0.1100 2019-08-30 18:09:33
     - Enable 7th chord cadences.
