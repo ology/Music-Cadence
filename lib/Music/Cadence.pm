@@ -59,12 +59,9 @@ use namespace::clean;
   $chords = $mc->cadence;
   # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5','Cs6']]
 
-  $mc = Music::Cadence->new(
-    octave => 4,
-    format => 'midinum',
-  );
+  $mc = Music::Cadence->new( format => 'midinum' );
 
-  $chords = $mc->cadence;
+  $chords = $mc->cadence( octave => 4 );
   # [[67,71,62], [60,64,67,72]]
 
   $chords = $mc->cadence( octave => -1 );
