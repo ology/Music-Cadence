@@ -252,7 +252,7 @@ the first C<half> cadence chord.  For the key of C<C major> this is:
 If an B<inversion> is defined for the C<half> cadence, the chords are
 inverted as described above for the C<imperfect> cadence.
 
-The B<evaded> cadence applies inversions to seventh chords.  The
+The C<evaded> cadence applies inversions to seventh chords.  The
 default (with no B<inversion> defined) is to invert the first chord by
 the third inversion and the second by the first inversion.
 
