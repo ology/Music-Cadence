@@ -53,7 +53,6 @@ use namespace::clean;
   # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5','Cs6']]
 
   $mc = Music::Cadence->new(
-    key    => 'C',
     octave => 4,
     format => 'midinum',
   );
