@@ -174,4 +174,11 @@ $chords = $mc->cadence(
 );
 is_deeply $chords, [ [qw/ F4 G5 B5 D5 /], [qw/ E4 G4 A#4 C5 /] ], 'C7 4 evaded';
 
+$chords = $mc->cadence(
+    octave    => 4,
+    type      => 'imperfect',
+    inversion => { 1 => 3, 2 => 1 },
+);
+is_deeply $chords, [ [qw/ F4 G5 B5 D5 /], [qw/ E4 G4 A#4 C5 /] ], 'C7 4 imperfect inversion 1-3,2-1';
+
 done_testing();
