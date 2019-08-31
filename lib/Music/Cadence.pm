@@ -458,8 +458,8 @@ __END__
 
 =head1 SEE ALSO
 
-The F<eg/cadence>, F<t/01-methods.t> and F<t/02-methods.t> files in
-this distribution.
+The F<eg/cadence>, F<eg/synopsis>, F<t/01-methods.t> and
+F<t/02-methods.t> files in this distribution.
 
 L<Moo>
 
