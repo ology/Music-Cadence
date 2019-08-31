@@ -227,6 +227,8 @@ apply to the chords of the cadence.  For example:
 This means, "Apply the second inversion to the first chord of the
 cadence, and apply the first inversion to the second chord."
 
+For seventh chords (of 4 notes), the third inversion can be applied.
+
 To B<not> apply an inversion to an inverted imperfect cadence chord,
 either do not include the numbered chord in the hash reference, or
 set its value to C<0> zero.
