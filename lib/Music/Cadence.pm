@@ -248,9 +248,8 @@ To B<not> apply an inversion to an inverted imperfect cadence chord,
 either do not include the numbered chord in the hash reference, or
 set its value to C<0> zero.
 
-The B<leading> chord is a number (1-7) for each diatonic scale chord
-to use for the first C<half> cadence chord.  For the key of C<C major>
-this is:
+The B<leading> chord is a number (1-7) for each scale chord to use for
+the first C<half> cadence chord.  For the key of C<C major> this is:
 
   CM: 1
   Dm: 2
