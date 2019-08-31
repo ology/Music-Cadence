@@ -30,10 +30,17 @@ use namespace::clean;
 
   $chords = $mc->cadence(
     type    => 'half',
-    leading => 2,
     octave  => 0,
+    leading => 2,
   );
   # [['D','F','A'], ['G','B','D']]
+
+  $chords = $mc->cadence(
+    type      => 'imperfect',
+    octave    => 4,
+    inversion => { 1 => 1, 2 => 1 },
+  );
+  # [['B4','D4','G4'], ['E4','G4','C4']]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
@@ -68,23 +75,14 @@ use namespace::clean;
   $chords = $mc->cadence;
   # [[7,11,2], [0,4,7,12]]
 
-  $mc = Music::Cadence->new;
-
-  $chords = $mc->cadence(
-    octave    => 4,
-    type      => 'imperfect',
-    inversion => { 1 => 1, 2 => 1 },
-  );
-  # [['B4','D4','G4'], ['E4','G4','C4']]
-
   $mc = Music::Cadence->new( seven => 1 );
 
   $chords = $mc->cadence;
   # [['G','B','D','F'], ['C','E','G','A#','C']]
 
   $chords = $mc->cadence(
-    octave => 4,
     type   => 'evaded',
+    octave => 4,
   );
   # [['F4','G5','B5','D5'], ['E4','G4','A#4','C5']]
 
