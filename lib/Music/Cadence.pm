@@ -224,8 +224,8 @@ apply to the chords of the cadence.  For example:
 
   inversion => { 1 => 2, 2 => 1 },
 
-Says, "Apply the second inversion to the first chord of the cadence,
-and apply the first inversion to the second chord."
+This means, "Apply the second inversion to the first chord of the
+cadence, and apply the first inversion to the second chord."
 
 To B<not> apply an inversion to an inverted imperfect cadence chord,
 either do not include the numbered chord in the hash reference, or
