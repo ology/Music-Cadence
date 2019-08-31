@@ -2,6 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Repair evaded test case.
+    - Make an imperfect inverted cadence test case identical to evaded.
 
 0.1201 2019-08-30 23:13:27
     - Add documentation for the evaded cadence.
