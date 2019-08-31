@@ -81,38 +81,6 @@ $chords = $mc->cadence(
 );
 is_deeply $chords, [ [qw/ G# C D# F# /], [qw/ F# A# C# E /] ], 'C#7 0 deceptive 2';
 
-$mc = Music::Cadence->new(
-    key    => 'C#',
-    octave => 5,
-    format => 'midi',
-    seven  => 1,
-);
-
-$chords = $mc->cadence;
-is_deeply $chords, [ [qw/ Gs5 C5 Ds5 Fs5 /], [qw/ Cs5 F5 Gs5 B5 Cs6 /] ], 'C#7 5 perfect midi';
-
-$mc = Music::Cadence->new(
-    octave => 4,
-    format => 'midinum',
-    seven  => 1,
-);
-
-$chords = $mc->cadence;
-is_deeply $chords, [ [ 67, 71, 62, 65 ], [ 60, 64, 67, 70, 72 ] ], 'C7 4 perfect midinum';
-
-$mc = Music::Cadence->new(
-    format => 'midinum',
-    seven  => 1,
-);
-
-$chords = $mc->cadence;
-is_deeply $chords, [ [ 19, 23, 14, 17 ], [ 12, 16, 19, 22, 24 ] ], 'C7 0 perfect midinum';
-
-$chords = $mc->cadence( octave => -1 );
-is_deeply $chords, [ [ 7, 11, 2, 5 ], [ 0, 4, 7, 10, 12 ] ], 'C7 -1 perfect midinum';
-
-$mc = Music::Cadence->new( seven => 1 );
-
 $chords = $mc->cadence( type => 'imperfect' );
 is_deeply $chords, [ [qw/ G B D F /], [qw/ C E G A# /] ], 'C7 0 imperfect 1';
 
@@ -180,5 +148,35 @@ $chords = $mc->cadence(
     inversion => { 1 => 1, 2 => 2 },
 );
 is_deeply $chords, [ [qw/ B4 D4 F4 G5 /], [qw/ G4 A#4 C5 E5 /] ], 'C7 4 evaded inversion 1-1,2-2';
+
+$mc = Music::Cadence->new(
+    key    => 'C#',
+    octave => 5,
+    format => 'midi',
+    seven  => 1,
+);
+
+$chords = $mc->cadence;
+is_deeply $chords, [ [qw/ Gs5 C5 Ds5 Fs5 /], [qw/ Cs5 F5 Gs5 B5 Cs6 /] ], 'C#7 5 perfect midi';
+
+$mc = Music::Cadence->new(
+    octave => 4,
+    format => 'midinum',
+    seven  => 1,
+);
+
+$chords = $mc->cadence;
+is_deeply $chords, [ [ 67, 71, 62, 65 ], [ 60, 64, 67, 70, 72 ] ], 'C7 4 perfect midinum';
+
+$mc = Music::Cadence->new(
+    format => 'midinum',
+    seven  => 1,
+);
+
+$chords = $mc->cadence;
+is_deeply $chords, [ [ 19, 23, 14, 17 ], [ 12, 16, 19, 22, 24 ] ], 'C7 0 perfect midinum';
+
+$chords = $mc->cadence( octave => -1 );
+is_deeply $chords, [ [ 7, 11, 2, 5 ], [ 0, 4, 7, 10, 12 ] ], 'C7 -1 perfect midinum';
 
 done_testing();
