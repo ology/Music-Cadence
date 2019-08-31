@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1203';
+our $VERSION = '0.1300';
 
 use Moo;
 use Music::Chord::Note;
@@ -262,7 +262,9 @@ the first C<half> cadence chord.  For the key of C<C major> this is:
 If an B<inversion> is defined for the C<half> cadence, the chords are
 inverted as described above for the C<imperfect> cadence.
 
-The B<evaded> cadence applies inversions to seventh chords.
+The B<evaded> cadence applies inversions to seventh chords.  The
+default (with no B<inversion> defined) is to invert the first chord by
+the third inversion and the second by the first inversion.
 
 =cut
 
@@ -323,11 +325,15 @@ sub cadence {
     }
     elsif ( $type eq 'evaded' && $self->seven ) {
         my $chord = $self->_generate_chord( $key, $scale, $scale_notes[4], $octave );
-        $chord = $self->_invert_chord( $chord, 3, $octave );
+        $inversion = { 1 => 3 }
+            unless $inversion && $inversion->{1};
+        $chord = $self->_invert_chord( $chord, $inversion->{1}, $octave );
         push @$cadence, $chord;
 
         $chord = $self->_generate_chord( $key, $scale, $scale_notes[0], $octave );
-        $chord = $self->_invert_chord( $chord, 1, $octave );
+        $inversion = { 2 => 1 }
+            unless $inversion && $inversion->{2};
+        $chord = $self->_invert_chord( $chord, $inversion->{2}, $octave );
         push @$cadence, $chord;
     }
     elsif ( $type eq 'plagal' ) {

@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Allow user defined inversions for the evaded cadence.
+
+0.1203 2019-08-31 09:22:15
     - Clean-up code.
 
 0.1202 2019-08-31 00:26:11
