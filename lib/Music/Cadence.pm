@@ -40,7 +40,7 @@ use namespace::clean;
     octave    => 4,
     inversion => { 1 => 1, 2 => 1 },
   );
-  # [['B4','D4','G4'], ['E4','G4','C4']]
+  # [['B4','D4','G5'], ['E4','G4','C5']]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
