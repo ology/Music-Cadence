@@ -283,13 +283,13 @@ sub cadence {
 
     my @scale = get_scale_notes( $key, $scale );
 
-    my $mcn = Music::Chord::Note->new;
-
     my $mtr = Music::ToRoman->new(
         scale_note => $key,
         scale_name => $scale,
         chords     => 0,
     );
+
+    my $mcn = Music::Chord::Note->new;
 
     if ( $type eq 'perfect' ) {
         my $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
@@ -430,7 +430,6 @@ sub _generate_chord {
     $type .= 7
         if $self->seven;
 
-    # Generate the chord notes
     my @notes = $mcn->chord( $note . $type );
 
     if ( $self->format eq 'midi' ) {
@@ -446,7 +445,6 @@ sub _generate_chord {
         die 'unknown format';
     }
 
-    # Append the octave if requested
     @notes = map { $_ . $octave } @notes
         if $octave && $self->format ne 'midinum';
 
