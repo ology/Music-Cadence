@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1103';
+our $VERSION = '0.1104';
 
 use Moo;
 use Music::Chord::Note;
@@ -366,7 +366,7 @@ sub _invert_chord {
         for ( @$chord ) {
             if ( $octave ) {
                 s/-1/$octave/;
-                s/0/++$octave/e;
+                s/0/$octave + 1/e;
             }
             else {
                 s/-1//;

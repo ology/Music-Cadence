@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Do *not* increment the octave on inversion substitution!
 
 0.1103 2019-08-30 21:46:35
     - Allow inversion of the second chord of the half cadence, because ...why not?
