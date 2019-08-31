@@ -21,26 +21,26 @@ use namespace::clean;
   my $mc = Music::Cadence->new;
 
   my $chords = $mc->cadence;
-  # [['G','B','D'], ['C','E','G','C']]
+  # [G B D], [C E G C]
 
   $mc = Music::Cadence->new( octave => 4 );
 
   $chords = $mc->cadence;
-  # [['G4','B4','D4'], ['C4','E4','G4','C5']]
+  # [G4 B4 D4], [C4 E4 G4 C5]
 
   $chords = $mc->cadence(
     type    => 'half',
     octave  => 0,
     leading => 2,
   );
-  # [['D','F','A'], ['G','B','D']]
+  # [D F A], [G B D]
 
   $chords = $mc->cadence(
     type      => 'imperfect',
     octave    => 4,
     inversion => { 1 => 1, 2 => 1 },
   );
-  # [['B4','D4','G5'], ['E4','G4','C5']]
+  # [B4 D4 G5], [E4 G4 C5]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
@@ -48,7 +48,7 @@ use namespace::clean;
   );
 
   $chords = $mc->cadence;
-  # [['G#5','C5','D#5'], ['C#5','F5','G#5','C#6']]
+  # [G#5 C5 D#5], [C#5 F5 G#5 C#6]
 
   $mc = Music::Cadence->new(
     key    => 'C#',
@@ -57,26 +57,26 @@ use namespace::clean;
   );
 
   $chords = $mc->cadence;
-  # [['Gs5','C5','Ds5'], ['Cs5','F5','Gs5','Cs6']]
+  # [Gs5 C5 Ds5], [Cs5 F5 Gs5 Cs6]
 
   $mc = Music::Cadence->new( format => 'midinum' );
 
   $chords = $mc->cadence( octave => 4 );
-  # [[67,71,62], [60,64,67,72]]
+  # [67 71 62], [60 64 67 72]
 
   $chords = $mc->cadence( octave => -1 );
-  # [[7,11,2], [0,4,7,12]]
+  # [7 11 2], [0 4 7 12]
 
   $mc = Music::Cadence->new( seven => 1 );
 
   $chords = $mc->cadence;
-  # [['G','B','D','F'], ['C','E','G','A#','C']]
+  # [G B D F], [C E G A# C]
 
   $chords = $mc->cadence(
     type   => 'evaded',
     octave => 4,
   );
-  # [['F4','G5','B5','D5'], ['E4','G4','A#4','C5']]
+  # [F4 G5 B5 D5], [E4 G4 A#4 C5]
 
 =head1 DESCRIPTION
 
