@@ -30,7 +30,6 @@ use namespace::clean;
 
   $chords = $mc->cadence(
     type    => 'half',
-    octave  => 0,
     leading => 2,
   );
   # [['D','F','A'], ['G','B','D']]
