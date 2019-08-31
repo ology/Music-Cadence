@@ -52,7 +52,10 @@ for my $i ( 1 .. $max ) {
     }
 }
 
-my $chords = $mc->cadence( type => 'deceptive' );
+my $chords = $mc->cadence(
+    type      => 'deceptive',
+    variation => int( rand 2 ) + 1,
+);
 $score->n( $half, @$_ ) for @$chords;
 
 $chords = $mc->cadence( type => 'plagal' );
