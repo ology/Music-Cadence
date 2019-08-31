@@ -422,14 +422,14 @@ sub _generate_chord {
         chords     => 0,
     );
 
-    my $mcn = Music::Chord::Note->new;
-
     # Figure out if the chord is diminished, minor, or major
     my $roman = $mtr->parse($note);
     my $type  = $roman =~ /^$diminished{$scale}$/ ? 'dim' : $roman =~ /^[a-z]/ ? 'm' : '';
 
     $type .= 7
         if $self->seven;
+
+    my $mcn = Music::Chord::Note->new;
 
     my @notes = $mcn->chord( $note . $type );
 
