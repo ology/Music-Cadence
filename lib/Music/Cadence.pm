@@ -156,7 +156,7 @@ has format => (
 
 =head2 seven
 
-Use 7th chords (of 4 notes).  Default: C<0>
+Use seventh chords (of 4 notes).  Default: C<0>
 
 =cut
 
