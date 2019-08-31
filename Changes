@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add documentation for the evaded cadence.
+
+0.1200 2019-08-30 23:04:53
     - Add the evaded cadence.
     - Clean up code.
     - Improve documentation.

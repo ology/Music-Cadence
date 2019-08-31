@@ -75,6 +75,12 @@ use namespace::clean;
   $chords = $mc->cadence;
   # [['G','B','D','F'], ['C','E','G','A#','C']]
 
+  $chords = $mc->cadence(
+    octave => 4,
+    type   => 'evaded',
+  );
+  # [['F4','G5','B5','D5'], ['E4','G4','A#4','C5']]
+
 =head1 DESCRIPTION
 
 C<Music::Cadence> generates a pair of musical cadence chords.
@@ -201,6 +207,7 @@ on the given B<key> and B<scale> name.
 Supported cadences are:
 
   deceptive
+  evaded
   half
   imperfect
   perfect
@@ -247,6 +254,8 @@ this is:
 
 If an B<inversion> is defined for the C<half> cadence, the chords are
 inverted as described above for the C<imperfect> cadence.
+
+The B<evaded> cadence applies inversions to seventh chords.
 
 =cut
 
