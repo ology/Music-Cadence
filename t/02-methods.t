@@ -108,13 +108,7 @@ $mc = Music::Cadence->new(
 $chords = $mc->cadence;
 is_deeply $chords, [ [ 19, 23, 14, 17 ], [ 12, 16, 19, 22, 24 ] ], 'C7 0 perfect midinum';
 
-$mc = Music::Cadence->new(
-    octave => -1,
-    format => 'midinum',
-    seven  => 1,
-);
-
-$chords = $mc->cadence;
+$chords = $mc->cadence( octave => -1 );
 is_deeply $chords, [ [ 7, 11, 2, 5 ], [ 0, 4, 7, 10, 12 ] ], 'C7 -1 perfect midinum';
 
 $mc = Music::Cadence->new( seven => 1 );
