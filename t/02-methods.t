@@ -168,12 +168,10 @@ $chords = $mc->cadence(
 );
 is_deeply $chords, [ [qw/ C4 D#4 F#4 G#5 /], [qw/ F4 G#4 B4 C#5 /] ], 'C#7 4 imperfect inversion 1-1,2-1';
 
-$mc = Music::Cadence->new(
+$chords = $mc->cadence(
     octave => 4,
-    seven  => 1,
+    type   => 'evaded',
 );
-
-$chords = $mc->cadence( type => 'evaded' );
 is_deeply $chords, [ [qw/ F4 G5 B5 D5 /], [qw/ E4 G4 A#4 C5 /] ], 'C7 4 evaded';
 
 done_testing();
