@@ -339,21 +339,17 @@ sub _invert_chord {
     }
     else {
         # Perform gymnastics to convert named notes to inverted named notes
-        my $notes = $chord;
-
-        $notes = [ grep { s/\d+// } @$notes ]
+        $chord = [ grep { s/\d+// } @$chord ]
             if $octave;
 
-        my $pitches = [ map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$notes ];
+        my $pitches = [ map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$chord ];
 
-        my $inverted = $mcp->chord_inv( $pitches, inv_num => $inversion );
+        $pitches = $mcp->chord_inv( $pitches, inv_num => $inversion );
 
-        $notes = [ map { Music::Note->new( $_, 'midinum' )->format('isobase') } @$inverted ];
+        $chord = [ map { Music::Note->new( $_, 'midinum' )->format('isobase') } @$pitches ];
 
-        $notes = [ map { $_ . $octave } @$notes ]
+        $chord = [ map { $_ . $octave } @$chord ]
             if $octave;
-
-        $chord = $notes;
     }
 
     return $chord;
