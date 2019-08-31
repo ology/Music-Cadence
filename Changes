@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add the evaded cadence.
     - Clean up code.
     - Improve documentation.
 
