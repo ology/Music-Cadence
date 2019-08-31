@@ -169,7 +169,7 @@ has format => (
 
 =head2 seven
 
-Use seventh chords of 4 notes instead of diatonic triads.
+If set, use seventh chords of 4 notes instead of diatonic triads.
 Default: C<0>
 
 =cut
