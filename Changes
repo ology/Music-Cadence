@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Allow inversion of the second chord of the half cadence, because ...why not?
+
+0.1101 2019-08-30 19:49:33
     - Improve eg/cadence slightly.
 
 0.1100 2019-08-30 18:09:33

@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1101';
+our $VERSION = '0.1102';
 
 use Moo;
 use Music::Chord::Note;
@@ -243,8 +243,8 @@ this is:
   Am: 6
   Bo: 7
 
-If an B<inversion> is defined for the C<half> cadence, the first chord
-is inverted.
+If an B<inversion> is defined for the C<half> cadence, the chords are
+inverted as described above for the C<imperfect> cadence.
 
 =cut
 
@@ -325,6 +325,8 @@ sub cadence {
         push @$cadence, $chord;
 
         $chord = $self->_generate_chord( $scale, $scale[4], $octave, $mtr, $mcn );
+        $chord = $self->_invert_chord( $chord, $inversion->{2}, $octave )
+            if $inversion && $inversion->{2};
         push @$cadence, $chord;
     }
     elsif ( $type eq 'deceptive' ) {
