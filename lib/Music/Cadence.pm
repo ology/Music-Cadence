@@ -82,10 +82,6 @@ C<Music::Cadence> generates a pair of musical cadence chords.
 These chords are usually added to the end of a musical phrase, and
 are used to suggest a sense of anticipation, pause, finality, etc.
 
-B<*> This module is a naive implementation of the actual theory.
-Currently, only chords of 3 notes are generated.  YMMV.  Patches
-welcome.
-
 =head1 ATTRIBUTES
 
 =head2 key
