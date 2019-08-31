@@ -361,10 +361,18 @@ sub _invert_chord {
 
         $pitches = $mcp->chord_inv( $pitches, inv_num => $inversion );
 
-        $chord = [ map { Music::Note->new( $_, 'midinum' )->format('isobase') } @$pitches ];
+        $chord = [ map { Music::Note->new( $_, 'midinum' )->format('ISO') } @$pitches ];
 
-        $chord = [ map { $_ . $octave } @$chord ]
-            if $octave;
+        for ( @$chord ) {
+            if ( $octave ) {
+                s/-1/$octave/;
+                s/0/++$octave/e;
+            }
+            else {
+                s/-1//;
+                s/0//;
+            }
+        }
     }
 
     return $chord;
