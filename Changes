@@ -2,7 +2,7 @@ Revision history for Music-Cadence
 
 {{$NEXT}}
     - Clean up code.
-    - Improve documentation slightly.
+    - Improve documentation.
 
 0.1104 2019-08-30 22:00:33
     - Do *not* increment the octave on inversion substitution!
