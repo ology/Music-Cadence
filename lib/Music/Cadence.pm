@@ -425,7 +425,8 @@ Evaded cadence
 
 =head1 SEE ALSO
 
-The F<eg/cadence> and F<t/01-methods.t> files in this distribution.
+The F<eg/cadence>, F<t/01-methods.t> and F<t/02-methods.t> files in
+this distribution.
 
 L<Moo>
 
