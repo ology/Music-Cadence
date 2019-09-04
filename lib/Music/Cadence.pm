@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1306';
+our $VERSION = '0.1307';
 
 use Moo;
 use Music::Chord::Note;
@@ -88,7 +88,9 @@ are used to suggest a sense of anticipation, pause, finality, etc.
 
 =head2 key
 
-The key or tonal center to use.  Default: C<C>
+The key or tonal center to use, in C<isobase> format.
+
+Default: C<C>
 
 Examples: C<G#>, C<Eb>
 
@@ -101,7 +103,7 @@ has key => (
 
 =head2 scale
 
-The scale to use.  Default: C<major>
+The modal scale to use.  Default: C<major>
 
 Supported scales are:
 
@@ -122,15 +124,17 @@ has scale => (
 
 =head2 octave
 
-The octave to either append to named chord notes (for C<midi> or
-C<isobase> format) or to determine the correct C<midinum> note number.
+The octave to either append to named chord notes, or to determine the
+correct C<midinum> note number.
 
 Default: C<0>
 
-If the B<format> is C<midi> or C<isobase>, setting this to C<0> means
-"do not append."
+If the B<format> is C<midi> or the default, setting this to C<0> means
+"do not append."  Setting it to a positive integer renders the note in
+C<ISO> format.
 
-The C<midinum> range for this attribute is from C<-1> to C<10>.
+The C<midinum> range for this attribute should an integer from C<-1>
+to C<9> (giving note numbers C<0> to C<127>).
 
 =cut
 
@@ -141,8 +145,9 @@ has octave => (
 
 =head2 format
 
-The output format to use.  Default: C<isobase> (i.e. "bare note
-names")
+The output format to use.
+
+Default: C<isobase> (i.e. "bare note names")
 
 If C<midi>, convert sharp C<#> to C<s> and flat C<b> to C<f> after
 chord generation.
@@ -159,6 +164,7 @@ has format => (
 =head2 seven
 
 If set, use seventh chords of four notes instead of diatonic triads.
+
 Default: C<0>
 
 =cut
@@ -189,9 +195,9 @@ Create a new C<Music::Cadence> object.
   $chords = $mc->cadence;     # Use defaults
 
   $chords = $mc->cadence(     # Override defaults
-    key       => $key,        # Default: C
-    scale     => $scale,      # Default: major
-    octave    => $octave,     # Default: 0
+    key       => $key,        # See above
+    scale     => $scale,      # "
+    octave    => $octave,     # "
     type      => $type,       # Default: perfect
     leading   => $leading,    # Default: 1
     variation => $variation,  # Default: 1
