@@ -205,4 +205,24 @@ $chords = $mc->cadence(
 );
 is_deeply $chords, [ [qw/ C4 Ds4 Gs5 /], [qw/ F4 Gs4 Cs5 /] ], 'C# 4 midi imperfect inversion 1-1,2-1';
 
+$chords = $mc->cadence(
+    key       => 'C#',
+    octave    => 4,
+    type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 1 },
+    picardy   => 1,
+);
+is_deeply $chords, [ [qw/ C4 Ds4 Gs5 /], [qw/ F4 A4 Cs5 /] ], 'C# 4 midi imperfect inversion 1-1,2-1 picardy';
+
+$mc = Music::Cadence->new( format => 'midinum' );
+
+$chords = $mc->cadence(
+    key       => 'C',
+    octave    => 3,
+    type      => 'imperfect',
+    inversion => { 1 => 1, 2 => 1 },
+    picardy   => 1,
+);
+is_deeply $chords, [ [qw/ 59 50 115 /], [qw/ 52 56 108/] ], 'C# 4 midinum imperfect inversion 1-1,2-1 picardy';
+
 done_testing();

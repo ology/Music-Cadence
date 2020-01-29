@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Correctly handle and test supported formats for the picardy cadence.
 
 0.1400 2020-01-29 08:53:03
     - Add the "Picardy third" cadence.

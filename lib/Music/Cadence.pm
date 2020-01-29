@@ -2,7 +2,7 @@ package Music::Cadence;
 
 # ABSTRACT: Generate musical cadence chords
 
-our $VERSION = '0.1400';
+our $VERSION = '0.1401';
 
 use Moo;
 use Music::Chord::Note;
@@ -387,24 +387,16 @@ sub cadence {
     }
 
     if ( $picardy ) {
-        my %halfstep = (
-            'C'  => 'C#',
-            'C#' => 'D',
-            'D'  => 'D#',
-            'D#' => 'E',
-            'E'  => 'F',
-            'E#' => 'F#',
-            'F'  => 'F#',
-            'F#' => 'G',
-            'G'  => 'G#',
-            'G#' => 'A',
-            'A'  => 'A#',
-            'A#' => 'B',
-            'B'  => 'C',
-            'B#' => 'C#',
-        );
-
-        $cadence->[1][1] = $halfstep{ $cadence->[1][1] };
+        if ( $self->format eq 'midinum' ) {
+            $cadence->[1][1]++;
+        }
+        else {
+            my $note = Music::Note->new( $cadence->[1][1], $self->format );
+            my $num  = $note->format('midinum');
+            $num++;
+            $note = Music::Note->new( $num, 'midinum' );
+            $cadence->[1][1] = $note->format( $self->format );
+        }
     }
 
     return $cadence;
