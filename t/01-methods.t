@@ -86,6 +86,15 @@ $chords = $mc->cadence(
 is_deeply $chords, [ [qw/ B D F /], [qw/ A C E /] ], 'D 0 dorian half';
 
 $chords = $mc->cadence(
+    key     => 'D',
+    scale   => 'dorian',
+    type    => 'half',
+    leading => 6,
+    picardy => 1,
+);
+is_deeply $chords, [ [qw/ B D F /], [qw/ A C# E /] ], 'D 0 dorian half picardy';
+
+$chords = $mc->cadence(
     key     => 'E',
     scale   => 'phrygian',
     type    => 'half',

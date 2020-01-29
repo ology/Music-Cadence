@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Add the "Picardy third" cadence.
 
 0.1309 2019-10-02 10:04:07
     - Just check that we die, instead of the M::TR error message. thrig++
