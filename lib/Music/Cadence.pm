@@ -304,6 +304,7 @@ sub cadence {
         push @$cadence, $chord;
 
         $chord = $self->_generate_chord( $key, $scale, $scale_notes[0], $octave );
+        # Add another top note, but an octave above
         my $top = $chord->[0];
         if ( $self->format eq 'midinum' ) {
             $top += 12;
