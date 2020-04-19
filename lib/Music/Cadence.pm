@@ -456,12 +456,16 @@ sub _invert_chord {
         $chord = [ map { s/\d+//; $_ } @$chord ]
             if $octave;
 
+        # Convert the chord into pitch-class representation
         my $pitches = [ map { Music::Note->new( $_ . -1, 'ISO' )->format('midinum') } @$chord ];
 
+        # Do the inversion!
         $pitches = $mcp->chord_inv( $pitches, inv_num => $inversion );
 
+        # Convert the pitch-classes back to named notes
         $chord = [ map { Music::Note->new( $_, 'midinum' )->format('ISO') } @$pitches ];
 
+        # Clean-up the chord
         for ( @$chord ) {
             if ( $octave ) {
                 s/-1/$octave/;
