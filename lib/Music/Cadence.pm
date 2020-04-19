@@ -451,8 +451,8 @@ sub _invert_chord {
     if ( $self->format eq 'midinum' ) {
         $chord = $mcp->chord_inv( $chord, inv_num => $inversion );
     }
-    else {
-        # Perform gymnastics to convert named notes to inverted named notes
+    else { # Perform gymnastics to convert named notes to inverted named notes:
+        # Strip the octave if present
         $chord = [ map { s/\d+//; $_ } @$chord ]
             if $octave;
 
