@@ -522,18 +522,21 @@ sub _generate_chord {
     my @notes = $mcn->chord( $note . $type );
 
     if ( $self->format eq 'midi' ) {
+        # Convert the sharps and flats
         for ( @notes ) {
             s/#/s/;
             s/b/f/;
         }
     }
     elsif ( $self->format eq 'midinum' ) {
+        # Convert the notes to midinum format
         @notes = map { Music::Note->new( $_ . $octave, 'ISO' )->format('midinum') } @notes;
     }
     elsif ( $self->format ne 'isobase' ) {
         die 'unknown format';
     }
 
+    # Append the octave if defined and the format is not midinum
     @notes = map { $_ . $octave } @notes
         if $octave && $self->format ne 'midinum';
 
