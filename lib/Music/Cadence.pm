@@ -105,7 +105,7 @@ has key => (
 
 The modal scale to use.  Default: C<major>
 
-Supported scales are:
+Supported scales are the diatonic modes:
 
   ionian / major
   dorian
