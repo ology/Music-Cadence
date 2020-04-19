@@ -88,6 +88,8 @@ suggest a sense of anticipation, pause, finality, etc.
 
 =head2 key
 
+  $key = $mc->key;
+
 The key or tonal center to use, in C<isobase> format.
 
 Default: C<C>
@@ -102,6 +104,8 @@ has key => (
 );
 
 =head2 scale
+
+  $scale = $mc->scale;
 
 The modal scale to use.  Default: C<major>
 
@@ -124,6 +128,8 @@ has scale => (
 
 =head2 octave
 
+  $octave = $mc->octave;
+
 The octave to either append to named chord notes, or to determine the
 correct C<midinum> note number.
 
@@ -145,6 +151,8 @@ has octave => (
 
 =head2 format
 
+  $format = $mc->format;
+
 The output format to use.
 
 Default: C<isobase> (i.e. "bare note names")
@@ -163,6 +171,8 @@ has format => (
 
 =head2 seven
 
+  $seven = $mc->seven;
+
 If set, use seventh chords of four notes instead of diatonic triads.
 
 Default: C<0>
@@ -175,6 +185,8 @@ has seven => (
 );
 
 =head2 picardy
+
+  $picardy = $mc->picardy;
 
 If set, use the "Picardy third" for the final chord.
 
