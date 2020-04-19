@@ -64,7 +64,7 @@ use namespace::clean;
   # [67 71 62], [60 64 67 72]
 
   $chords = $mc->cadence( octave => -1 );
-  # [7 11 2], [0 4 7 12]
+  # [7 11 2], [0 4 7 12] <- pitch-classes!
 
   $mc = Music::Cadence->new( seven => 1 );
 
