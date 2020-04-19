@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Improve documentation.
 
 0.1401 2020-01-29 11:19:49
     - Correctly handle and test supported formats for the picardy cadence.
