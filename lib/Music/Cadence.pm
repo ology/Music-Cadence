@@ -519,6 +519,7 @@ sub _generate_chord {
 
     my $mcn = Music::Chord::Note->new;
 
+    # Get the notes of the chord (without an octave)
     my @notes = $mcn->chord( $note . $type );
 
     if ( $self->format eq 'midi' ) {
