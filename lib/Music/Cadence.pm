@@ -235,7 +235,7 @@ Create a new C<Music::Cadence> object.
   );
 
 Return an array reference of the chords of the cadence B<type> based
-on the given B<key> and B<scale> name.
+on the given B<key> and B<scale> name, etc.
 
 Supported cadences are:
 
