@@ -291,6 +291,34 @@ The C<evaded> cadence applies inversions to seventh chords.  The
 default (with no B<inversion> defined) is to invert the first chord by
 the third inversion and the second by the first inversion.
 
+Here is a summary showing resolutions and options:
+
+ 1. deceptive -> V-vi or V-IV
+    variation
+        1: final chord = vi
+        2: final chord = IV
+
+ 2. evaded -> inverted V-I 7th chords
+    inversion
+        1: 1st, 2nd, or 3rd applied to first chord
+        2: "                           second chord
+
+ 3. half -> <leading>-IV and possibly inverted
+    leading: first chord = 1-7
+    inversion
+        as above (3rd inversion only for 7th chords)
+
+ 4. imperfect -> V-I or vii-I or V-I inverted
+    variation (no inversion)
+        1: first chord = V
+        2: first chord = vii
+    inversion (variation ignored)
+        as above (3rd inversion only for 7th chords)
+
+ 5. perfect -> V-I + tonic of I added an octave above
+
+ 6. plagal -> IV-I
+
 =cut
 
 sub cadence {
