@@ -303,7 +303,7 @@ Here is a summary showing resolutions and options:
         1: 1st, 2nd, or 3rd applied to first chord
         2: "                           second chord
 
- 3. Half -> <leading>-IV and possibly inverted
+ 3. Half -> <leading>-V and possibly inverted
     leading: first chord = 1-7
     inversion
         as above (3rd inversion only for 7th chords)
