@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1404 2020-04-20 00:33:30
     - Remove the redundant eg/synopsis program.
     - Simplify the eg/cadence code.
 
