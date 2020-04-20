@@ -315,7 +315,7 @@ Here is a summary showing resolutions and options:
     inversion (variation ignored)
         as above (3rd inversion only for 7th chords)
 
- 5. Perfect -> V-I + tonic of I added an octave above
+ 5. Perfect -> V-I + tonic added an octave above
 
  6. Plagal -> IV-I
 
