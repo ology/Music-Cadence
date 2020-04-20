@@ -5,8 +5,6 @@
 use strict;
 use warnings;
 
-use lib $ENV{HOME} . '/sandbox/MIDI-Util/lib';
-use lib $ENV{HOME} . '/sandbox/Music-ToRoman/lib';
 use MIDI::Util;
 use Music::Cadence;
 use Music::Scales;
