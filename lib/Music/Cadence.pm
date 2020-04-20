@@ -276,13 +276,13 @@ set its value to C<0> zero.
 The B<leading> chord is a number (1-7) for the scale chord to use for
 the first C<half> cadence chord.  For the key of C<C major> this is:
 
-  C maj: 1
-  D min: 2
-  E min: 3
-  F maj: 4
-  G maj: 5
-  A min: 6
-  B dim: 7
+  1: C maj
+  2: D min
+  3: E min
+  4: F maj
+  5: G maj
+  6: A min
+  7: B dim
 
 If an B<inversion> is defined for the C<half> cadence, the chords are
 inverted as described above for the C<imperfect> cadence.
