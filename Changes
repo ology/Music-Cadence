@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1500 2020-06-08 02:43:13
     - Add the ->remove_notes convenience method.
 
 0.1404 2020-04-20 00:33:30
