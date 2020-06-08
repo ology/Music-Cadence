@@ -1,9 +1,11 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Specify a prereq version for List::Util.
 
 0.1500 2020-06-08 02:43:13
     - Add the ->remove_notes convenience method.
+    - Improve eg/cadence.
 
 0.1404 2020-04-20 00:33:30
     - Remove the redundant eg/synopsis program.
