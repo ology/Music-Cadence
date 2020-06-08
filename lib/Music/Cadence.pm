@@ -4,6 +4,7 @@ package Music::Cadence;
 
 our $VERSION = '0.1404';
 
+use List::Util 'any';
 use Moo;
 use Music::Chord::Note;
 use Music::Chord::Positions;
@@ -76,6 +77,9 @@ use namespace::clean;
     octave => 4,
   );
   # [F4 G5 B5 D5], [E4 G4 A#4 C5]
+
+  my $altered = $mc->remove_notes([1,2], [qw(Gs5 C5 Ds5)]);
+  # [Gs5]
 
 =head1 DESCRIPTION
 
@@ -544,12 +548,32 @@ sub _generate_chord {
     return \@notes;
 }
 
+=head2 remove_notes
+
+  $altered = $mc->remove_notes(\@indices, \@chord);
+
+Remove the given indices from the given chord.
+
+=cut
+
+sub remove_notes {
+    my ($self, $indices, $chord) = @_;
+    my @chord;
+    for my $n (0 .. @$chord - 1) {
+        next if any { $n == $_ } @$indices;
+        push @chord, $chord->[$n];
+    }
+    return \@chord;
+}
+
 1;
 __END__
 
 =head1 SEE ALSO
 
 The F<eg/*> and F<t/*> programs in this distribution
+
+L<List::Util>
 
 L<Moo>
 
