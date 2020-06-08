@@ -1,7 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
-    - Specify a prereq version for List::Util.
+    - Specify distribution prereqs.
 
 0.1500 2020-06-08 02:43:13
     - Add the ->remove_notes convenience method.
