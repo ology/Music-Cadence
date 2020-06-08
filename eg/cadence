@@ -12,6 +12,7 @@ use Music::Scales;
 my $max    = shift || 16;
 my $note   = shift || 'C';
 my $type   = shift || 'major';
+my $scale  = shift || 'pentatonic';
 my $octave = shift || 4;
 my $bpm    = shift || 100;
 my $leads  = shift || '1 2 4 7';
@@ -19,7 +20,7 @@ my $leads  = shift || '1 2 4 7';
 my $quarter = 'qn';
 my $half    = 'hn';
 
-my @scale = get_scale_MIDI( $note, $octave, $type );
+my @scale = get_scale_MIDI( $note, $octave, $scale );
 
 my @leaders = split /\s+/, $leads;
 
