@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Illustrate the ->remove_notes method in eg/cadence.
+
+0.1501 2020-06-08 02:49:47
     - Specify distribution prereqs.
 
 0.1500 2020-06-08 02:43:13
