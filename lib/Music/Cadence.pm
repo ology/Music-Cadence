@@ -297,7 +297,7 @@ The C<evaded> cadence applies inversions to seventh chords.  The
 default is to invert the first chord by the third inversion and the
 second by the first inversion.
 
-Here is a summary showing resolutions and options:
+=head3 Here is a handy summary showing resolutions and options:
 
  1. Deceptive -> V-vi or V-IV
     variation
