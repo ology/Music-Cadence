@@ -59,6 +59,9 @@ $score->n( $half, @$_ ) for @$chords;
 $chords = $mc->cadence( type => 'plagal' );
 $score->n( $half, @$_ ) for @$chords;
 
+$chords = $mc->cadence( type => 'perfect' );
+$score->n( $half, @$_ ) for @$chords;
+
 $score->write_score("$0.mid");
 
 sub clip {
