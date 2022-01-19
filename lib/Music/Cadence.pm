@@ -111,7 +111,9 @@ has key => (
 
   $scale = $mc->scale;
 
-The modal scale to use.  Default: C<major>
+The modal scale to use.
+
+Default: C<major>
 
 Supported scales are the diatonic modes:
 
