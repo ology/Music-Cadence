@@ -1,6 +1,9 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Improve documentation ever so slightly.
+
+0.1503 2022-01-18 20:43:44
     - Update the eg/cadence program.
     - Improve documentation.
 
