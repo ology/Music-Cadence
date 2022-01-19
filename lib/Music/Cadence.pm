@@ -292,8 +292,8 @@ If an B<inversion> is defined for the C<half> cadence, the chords are
 inverted as described above for the C<imperfect> cadence.
 
 The C<evaded> cadence applies inversions to seventh chords.  The
-default (with no B<inversion> defined) is to invert the first chord by
-the third inversion and the second by the first inversion.
+default is to invert the first chord by the third inversion and the
+second by the first inversion.
 
 Here is a summary showing resolutions and options:
 
