@@ -4,15 +4,16 @@ package Music::Cadence;
 
 our $VERSION = '0.1505';
 
-use List::Util 'any';
-use Music::Chord::Note;
-use Music::Chord::Positions;
-use Music::Note;
-use Music::Scales;
-use Music::ToRoman;
-
 use Moo;
 use strictures 2;
+
+use List::Util qw(any);
+use Music::Chord::Note ();
+use Music::Chord::Positions ();
+use Music::Note ();
+use Music::Scales qw(get_scale_notes);
+use Music::ToRoman ();
+
 use namespace::clean;
 
 with('Music::PitchNum');
