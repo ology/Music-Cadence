@@ -255,6 +255,8 @@ Supported cadences are:
   perfect
   plagal
 
+And "authentic" cadence is either perfect or imperfect.
+
 The B<variation> applies to the C<deceptive> and C<imperfect> cadences.
 
 If the B<type> is C<deceptive>, the B<variation> determines the final
@@ -335,12 +337,12 @@ sub cadence {
 
     my $cadence = [];
 
-    my $key       = $args{key} || $self->key;
-    my $scale     = $args{scale} || $self->scale;
-    my $octave    = $args{octave} // $self->octave;
-    my $picardy   = $args{picardy} || $self->picardy;
-    my $type      = $args{type} || 'perfect';
-    my $leading   = $args{leading} || 1;
+    my $key       = $args{key}       || $self->key;
+    my $scale     = $args{scale}     || $self->scale;
+    my $octave    = $args{octave}    // $self->octave;
+    my $picardy   = $args{picardy}   || $self->picardy;
+    my $type      = $args{type}      || 'perfect';
+    my $leading   = $args{leading}   || 1;
     my $variation = $args{variation} || 1;
     my $inversion = $args{inversion} || 0;
 
