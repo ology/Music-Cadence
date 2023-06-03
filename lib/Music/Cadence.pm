@@ -25,7 +25,7 @@ with('Music::PitchNum');
   my $chords = $mc->cadence;
   # [G B D], [C E G C]
 
-  $mc = Music::Cadence->new( octave => 4 );
+  $mc = Music::Cadence->new(octave => 4);
 
   $chords = $mc->cadence;
   # [G4 B4 D4], [C4 E4 G4 C5]
@@ -60,15 +60,15 @@ with('Music::PitchNum');
   $chords = $mc->cadence;
   # [Gs5 C5 Ds5], [Cs5 F5 Gs5 Cs6]
 
-  $mc = Music::Cadence->new( format => 'midinum' );
+  $mc = Music::Cadence->new(format => 'midinum');
 
-  $chords = $mc->cadence( octave => 4 );
+  $chords = $mc->cadence(octave => 4);
   # [67 71 62], [60 64 67 72]
 
-  $chords = $mc->cadence( octave => -1 );
+  $chords = $mc->cadence(octave => -1);
   # [7 11 2], [0 4 7 12] <- pitch-classes!
 
-  $mc = Music::Cadence->new( seven => 1 );
+  $mc = Music::Cadence->new(seven => 1);
 
   $chords = $mc->cadence;
   # [G B D F], [C E G A# C]
