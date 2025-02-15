@@ -21,7 +21,6 @@ with('Music::PitchNum');
   use Music::Cadence;
 
   my $mc = Music::Cadence->new;
-
   my $chords = $mc->cadence;
   # [G B D], [C E G C]
 
@@ -47,7 +46,6 @@ with('Music::PitchNum');
     key    => 'C#',
     octave => 5,
   );
-
   $chords = $mc->cadence;
   # [G#5 C5 D#5], [C#5 F5 G#5 C#6]
 
@@ -56,7 +54,6 @@ with('Music::PitchNum');
     octave => 5,
     format => 'midi',
   );
-
   $chords = $mc->cadence;
   # [Gs5 C5 Ds5], [Cs5 F5 Gs5 Cs6]
 
