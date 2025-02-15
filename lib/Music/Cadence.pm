@@ -210,9 +210,8 @@ has picardy => (
 
 =head2 new
 
-  $mc = Music::Cadence->new;  # Use defaults
-
-  $mc = Music::Cadence->new(  # Override defaults
+  $mc = Music::Cadence->new; # Use defaults
+  $mc = Music::Cadence->new( # Override defaults
     key     => $key,
     scale   => $scale,
     octave  => $octave,
@@ -226,7 +225,6 @@ Create a new C<Music::Cadence> object.
 =head2 cadence
 
   $chords = $mc->cadence;     # Use defaults
-
   $chords = $mc->cadence(     # Override defaults
     key       => $key,        # See above
     scale     => $scale,      # "
