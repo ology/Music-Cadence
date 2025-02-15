@@ -1,6 +1,8 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+
+0.1509 2025-02-14 20:54:51
     - Lose local author lib line in eg/.
     - Modernize test suite.
 
