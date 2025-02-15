@@ -31,7 +31,7 @@ subtest throws => sub {
     throws_ok { $mc->cadence( leading => 666 ) }
         qr/unknown leader/, 'unknown leader';
 
-    $mc = Music::Cadence->new( format => 'foo' );
+    $mc = new_ok 'Music::Cadence' => [format => 'foo'];
     throws_ok { $mc->cadence }
         qr/unknown format/, 'unknown format';
 };
@@ -132,35 +132,35 @@ subtest deceptive => sub {
 };
 
 subtest format => sub {
-    my $mc = Music::Cadence->new(
+    my $mc = new_ok 'Music::Cadence' => [
         key    => 'C#',
         octave => 5,
         format => 'midi',
-    );
+    ];
 
     my $chords = $mc->cadence;
     is_deeply $chords, [ [qw/ Gs5 C5 Ds5 /], [qw/ Cs5 F5 Gs5 Cs6 /] ], 'C# 5 perfect midi';
 
-    $mc = Music::Cadence->new(
+    $mc = new_ok 'Music::Cadence' => [
         octave => 4,
         format => 'midinum',
-    );
+    ];
 
     $chords = $mc->cadence;
     is_deeply $chords, [ [ 67, 71, 62 ], [ 60, 64, 67, 72 ] ], 'C 4 perfect midinum';
 
-    $mc = Music::Cadence->new(
+    $mc = new_ok 'Music::Cadence' => [
         octave => 0,
         format => 'midinum',
-    );
+    ];
 
     $chords = $mc->cadence;
     is_deeply $chords, [ [ 19, 23, 14 ], [ 12, 16, 19, 24 ] ], 'C 0 perfect midinum';
 
-    $mc = Music::Cadence->new(
+    $mc = new_ok 'Music::Cadence' => [
         octave => -1,
         format => 'midinum',
-    );
+    ];
 
     $chords = $mc->cadence;
     is_deeply $chords, [ [ 7, 11, 2 ], [ 0, 4, 7, 12 ] ], 'C -1 perfect midinum';
@@ -217,7 +217,7 @@ subtest imperfect => sub {
     );
     is_deeply $chords, [ [qw/ C4 D#4 G#5 /], [qw/ F4 G#4 C#5 /] ], 'C# 4 imperfect inversion 1-1,2-1';
 
-    $mc = Music::Cadence->new( format => 'midi' );
+    $mc = new_ok 'Music::Cadence' => [ format => 'midi' ];
 
     $chords = $mc->cadence(
         key       => 'C#',
@@ -236,7 +236,7 @@ subtest imperfect => sub {
     );
     is_deeply $chords, [ [qw/ C4 Ds4 Gs5 /], [qw/ F4 A4 Cs5 /] ], 'C# 4 midi imperfect inversion 1-1,2-1 picardy';
 
-    $mc = Music::Cadence->new( format => 'midinum' );
+    $mc = new_ok 'Music::Cadence' => [ format => 'midinum' ];
 
     $chords = $mc->cadence(
         key       => 'C',
