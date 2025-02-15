@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-no warnings 'qw';
 
 use Test::More;
 use Test::Exception;
@@ -37,6 +36,7 @@ subtest throws => sub {
 };
 
 subtest cadence => sub {
+    no warnings 'qw';
     my $mc = new_ok 'Music::Cadence';
 
     my $chords = $mc->cadence;
@@ -50,6 +50,7 @@ subtest cadence => sub {
 };
 
 subtest plagal => sub {
+    no warnings 'qw';
     my $mc = new_ok 'Music::Cadence';
 
     my $chords = $mc->cadence( type => 'plagal' );
@@ -63,6 +64,7 @@ subtest plagal => sub {
 };
 
 subtest half => sub {
+    no warnings 'qw';
     my $mc = new_ok 'Music::Cadence';
 
     my $chords = $mc->cadence(
@@ -121,6 +123,7 @@ subtest half => sub {
 };
 
 subtest deceptive => sub {
+    no warnings 'qw';
     my $mc = new_ok 'Music::Cadence';
 
     my $chords = $mc->cadence(
@@ -167,6 +170,7 @@ subtest format => sub {
 };
 
 subtest imperfect => sub {
+    no warnings 'qw';
     my $mc = new_ok 'Music::Cadence';
 
     my $chords = $mc->cadence( type => 'imperfect' );
