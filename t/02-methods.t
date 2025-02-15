@@ -171,31 +171,29 @@ subtest evaded => sub {
 };
 
 subtest format => sub {
-    my $mc = new_ok 'Music::Cadence' => [seven => 1];
-
-    $mc = Music::Cadence->new(
+    my $mc = new_ok 'Music::Cadence' => [
         key    => 'C#',
         octave => 5,
         format => 'midi',
         seven  => 1,
-    );
+    ];
 
     my $chords = $mc->cadence;
     is_deeply $chords, [ [qw/ Gs5 C5 Ds5 Fs5 /], [qw/ Cs5 F5 Gs5 B5 Cs6 /] ], 'C#7 5 perfect midi';
 
-    $mc = Music::Cadence->new(
+    $mc = new_ok 'Music::Cadence' => [
         octave => 4,
         format => 'midinum',
         seven  => 1,
-    );
+    ];
 
     $chords = $mc->cadence;
     is_deeply $chords, [ [ 67, 71, 62, 65 ], [ 60, 64, 67, 70, 72 ] ], 'C7 4 perfect midinum';
 
-    $mc = Music::Cadence->new(
+    $mc = new_ok 'Music::Cadence' => [
         format => 'midinum',
         seven  => 1,
-    );
+    ];
 
     $chords = $mc->cadence;
     is_deeply $chords, [ [ 19, 23, 14, 17 ], [ 12, 16, 19, 22, 24 ] ], 'C7 0 perfect midinum';
