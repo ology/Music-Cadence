@@ -83,8 +83,8 @@ with('Music::PitchNum');
 
 C<Music::Cadence> generates a pair of musical cadence chords.
 
-These chords are added to the end of a musical phrase, and are used to
-suggest a sense of anticipation, pause, finality, etc.
+These chords are often added to the end of a musical phrase, and are
+used to suggest a sense of anticipation, pause, finality, etc.
 
 =head1 ATTRIBUTES
 
