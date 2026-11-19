@@ -1,6 +1,7 @@
 Revision history for Music-Cadence
 
 {{$NEXT}}
+    - Remove the ->remove_notes method.
 
 0.1511 2025-02-15 16:13:21
     - Add the verbose attribute.

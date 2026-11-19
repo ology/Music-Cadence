@@ -77,9 +77,6 @@ with('Music::PitchNum');
   );
   # [F4 G5 B5 D5], [E4 G4 A#4 C5]
 
-  my $altered = $mc->remove_notes([1,2], [qw(Gs5 C5 Ds5)]);
-  # [Gs5]
-
 =head1 DESCRIPTION
 
 C<Music::Cadence> generates a pair of musical cadence chords.
@@ -574,24 +571,6 @@ sub _generate_chord {
         if $octave && $self->format ne 'midinum';
 
     return \@notes;
-}
-
-=head2 remove_notes
-
-  $altered = $mc->remove_notes(\@indices, \@chord);
-
-Remove the given indices from the given chord.
-
-=cut
-
-sub remove_notes {
-    my ($self, $indices, $chord) = @_;
-    my @chord;
-    for my $n (0 .. @$chord - 1) {
-        next if any { $n == $_ } @$indices;
-        push @chord, $chord->[$n];
-    }
-    return \@chord;
 }
 
 1;
